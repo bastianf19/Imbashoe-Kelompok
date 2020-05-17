@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2cb6079834b99273de5698fb076534d8
+class ComposerStaticInit622780020c34f882a5ed1e3d72604102
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -18,6 +18,8 @@ class ComposerStaticInit2cb6079834b99273de5698fb076534d8
         'P' => 
         array (
             'PhpOption\\' => 10,
+            'Phalcon\\Migrations\\' => 19,
+            'Phalcon\\Cop\\' => 12,
         ),
         'D' => 
         array (
@@ -34,6 +36,14 @@ class ComposerStaticInit2cb6079834b99273de5698fb076534d8
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
+        'Phalcon\\Migrations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phalcon/migrations/src',
+        ),
+        'Phalcon\\Cop\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phalcon/cli-options-parser/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -43,8 +53,8 @@ class ComposerStaticInit2cb6079834b99273de5698fb076534d8
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2cb6079834b99273de5698fb076534d8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2cb6079834b99273de5698fb076534d8::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit622780020c34f882a5ed1e3d72604102::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit622780020c34f882a5ed1e3d72604102::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

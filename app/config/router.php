@@ -12,6 +12,16 @@ $router->add('/', [
     'action' =>  'index'
 ]);
 
+
+// $router->add(
+//     "/signup/edit/:params",
+//     array(
+//         "controller" => "signup",
+//         "action" => "edit",
+//         "id_user" => 1, 
+//     )
+//     );
+
 $router->add('/:controller', [
     'namespace' => 'App\Controllers',
     'controller' =>  1,
@@ -44,5 +54,6 @@ $router->notFound([
     'controller' => 'error',
     'action' => 'notFound',
 ]);
+
 
 $router->handle($di->get('request_uri'));

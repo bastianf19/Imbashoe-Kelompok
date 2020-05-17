@@ -152,7 +152,7 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h3 class="card-title text-center"><a href=""><img src="/public/img/logo.png"
+                        <h3 class="card-title text-center"><a href=""><img src="/img/Logoimba.png"
                                     style="max-height: 300px; max-width: 300px;"></a>Tambah Produk</h3>
                         <form method="POST" autocomplete="off" action="{{url('produk/tambah')}}" enctype="multipart/form-data">
                             <div class="form-label-group">
@@ -177,6 +177,11 @@
                                 <input type="text" name='harga_produk' id="harga_produk" class="form-control"
                                     placeholder="Harga Produk" required autofocus>
                                 <label for="harga_produk">Harga Produk</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" name='kategori' id="kategori" class="form-control"
+                                    placeholder="Kategori" required autofocus>
+                                <label for="kategori">kategori</label>
                             </div>
                             
                             <div class="input-group mb-3">

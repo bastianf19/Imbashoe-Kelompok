@@ -12,7 +12,8 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Session\Adapter\Stream as SessionAdapter;
 use Phalcon\Session\Manager as SessionManager;
 use Phalcon\Url as UrlResolver;
-
+use App\Plugins\SecurityPlugin;
+use Phalcon\Session\Bag;
 /**
  * Shared configuration service
  */
@@ -119,6 +120,10 @@ $di->set('flash', function () {
 /**
  * Start the session the first time some component request the session service
  */
+$di->setShared('sessionBag', function () {
+            return new Bag('bag');
+});
+
 $di->setShared('session', function () {
     $session = new SessionManager();
     $files = new SessionAdapter([
@@ -150,7 +155,10 @@ $di->setShared('dispatcher', function() {
             }
         }
     );
-
+    $eventsManager->attach(
+            'dispatch:beforeExecuteRoute',
+            new SecurityPlugin()
+    );
     $dispatcher = new Dispatcher();
 
     //Bind the EventsManager to the dispatcher

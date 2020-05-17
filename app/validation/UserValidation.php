@@ -13,6 +13,14 @@ class UserValidation extends Validation
     public function initialize()
     {
         $this->add(
+            'username',
+            new PresenceOf(
+                [
+                    'message' => 'Username harus diisi',
+                ]
+            )
+        );
+        $this->add(
             'nama',
             new PresenceOf(
                 [
@@ -36,14 +44,7 @@ class UserValidation extends Validation
                 ]
             )
         );
-        $this->add(
-            'alamat',
-            new PresenceOf(
-                [
-                    'message' => 'Alamat User harus diisi',
-                ]
-            )
-        );
+        
         $this->add(
             'no_hp',
             new PresenceOf(

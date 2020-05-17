@@ -18,7 +18,7 @@ return new \Phalcon\Config([
         'charset'     => getenv('DB_CHARSET'),
     ],
     'application' => [
-        'appDir'         => APP_PATH . '/',
+        'appDir'         => APP_PATH .'/',
         'controllersDir' => APP_PATH . '/controllers/',
         'modelsDir'      => APP_PATH . '/models/',
         'migrationsDir'  => APP_PATH . '/migrations/',
@@ -28,5 +28,12 @@ return new \Phalcon\Config([
         'cacheDir'       => BASE_PATH . '/cache/',
         'validationDir' => APP_PATH . '/validation/',
         'baseUri'        => getenv('BASE_URI') ? : '/',
-    ]
+        // 'logInDb' => true,
+        // 'migrationsDir' => 'db/migrations',
+        // 'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
+        // 'exportDataFromTables' => [
+        //     'imbashoe'
+        //     // Attention! It will export data every new migration
+        // ],
+    ],
 ]);

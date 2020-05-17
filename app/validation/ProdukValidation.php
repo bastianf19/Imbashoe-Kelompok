@@ -53,6 +53,15 @@ class ProdukValidation extends Validation
         //     )
         // );
         $this->add(
+            'kategori',
+            new PresenceOf(
+                [
+                    'message' => 'Kategori Produk harus diisi',
+                ]
+            )
+        );
+
+        $this->add(
             'status_produk',
             new PresenceOf(
                 [

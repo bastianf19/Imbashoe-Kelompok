@@ -1,201 +1,146 @@
-<html>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row flex-lg-nowrap">
+  
 
-<head>
-    <style>
-        :root {
-            --input-padding-x: 1.5rem;
-            --input-padding-y: .75rem;
-        }
-
-        body {
-            background: #007bff;
-            background: linear-gradient(to right, #0062E6, #33AEFF);
-        }
-
-        .card-signin {
-            border: 0;
-            border-radius: 1rem;
-            box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .card-signin .card-title {
-            margin-bottom: 2rem;
-            font-weight: 300;
-            font-size: 1.5rem;
-        }
-
-        .card-signin .card-body {
-            padding: 2rem;
-        }
-
-        .form-signin {
-            width: 100%;
-        }
-
-        .form-label-group>label {
-            background: none;
-            pointer-events: none;
-        }
-
-        .form-signin .btn {
-            font-size: 80%;
-            border-radius: 5rem;
-            letter-spacing: .1rem;
-            font-weight: bold;
-            padding: 1rem;
-            transition: all 0.2s;
-        }
-
-        .form-label-group {
-            position: relative;
-            margin-bottom: 1rem;
-        }
-
-        .form-label-group input {
-            height: auto;
-            border-radius: 2rem;
-        }
-
-        .form-label-group>input,
-        .form-label-group>label {
-            padding: var(--input-padding-y) var(--input-padding-x);
-        }
-
-        .form-label-group>label {
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: block;
-            width: 100%;
-            margin-bottom: 0;
-            /* Override default `<label>` margin */
-            line-height: 1.5;
-            color: #495057;
-            border: 1px solid transparent;
-            border-radius: .25rem;
-            transition: all .1s ease-in-out;
-        }
-
-        .form-label-group input::-webkit-input-placeholder {
-            color: transparent;
-        }
-
-        .form-label-group input:-ms-input-placeholder {
-            color: transparent;
-        }
-
-        .form-label-group input::-ms-input-placeholder {
-            color: transparent;
-        }
-
-        .form-label-group input::-moz-placeholder {
-            color: transparent;
-        }
-
-        .form-label-group input::placeholder {
-            color: transparent;
-        }
-
-        .form-label-group input:not(:placeholder-shown) {
-            padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-            padding-bottom: calc(var(--input-padding-y) / 3);
-        }
-
-        .form-label-group input:not(:placeholder-shown)~label {
-            padding-top: calc(var(--input-padding-y) / 3);
-            padding-bottom: calc(var(--input-padding-y) / 3);
-            font-size: 12px;
-            color: #777;
-        }
-
-        .btn-google {
-            color: white;
-            background-color: #ea4335;
-        }
-
-        .btn-facebook {
-            color: white;
-            background-color: #3b5998;
-        }
-
-        /* Fallback for Edge
-        -------------------------------------------------- */
-
-        @supports (-ms-ime-align: auto) {
-            .form-label-group>label {
-                display: none;
-            }
-
-            .form-label-group input::-ms-input-placeholder {
-                color: #777;
-            }
-        }
-
-        /* Fallback for IE
-        -------------------------------------------------- */
-
-        @media all and (-ms-high-contrast: none),
-        (-ms-high-contrast: active) {
-            .form-label-group>label {
-                display: none;
-            }
-
-            .form-label-group input:-ms-input-placeholder {
-                color: #777;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin my-5">
-                    <div class="card-body">
-                        <h3 class="card-title text-center"><a href=""><img src="/public/img/logo.png"
-                                    style="max-height: 300px; max-width: 300px;"></a>Update User</h3>
-                        <form autocomplete="off" method="post" action="{{ url('signUp/update/' ~ user.id_user) }}">
-                            <div class="form-label-group">
-                                <input type="text" name='nama' id="nama" class="form-control" placeholder="Nama"
-                                    required autofocus>
-                                <label for="nama">Nama</label>
-                            </div>
-
-                            <div class="form-label-group">
-                                <input type="email" id="email" name="email" class="form-control"
-                                    placeholder="Alamat Email" required autofocus>
-                                <label for="email">Alamat Email</label>
-                            </div>
-
-                            <div class="form-label-group">
-                                <input type="password" name='pass' id="pass" class="form-control" placeholder="Password"
-                                    required>
-                                <label for="pass">Password</label>
-                            </div>
-
-                            <div class="form-label-group">
-                                <input type="text" name='alamat' id="alamat" class="form-control" placeholder="Alamat"
-                                    required autofocus>
-                                <label for="alamat">Alamat</label>
-                            </div>
-
-                            <div class="form-label-group">
-                                <input type="text" name='no_hp' id="no_hp" class="form-control"
-                                    placeholder="Nomor Telefon" required autofocus>
-                                <label for="no_hp">Nomor Telefon</label>
-                            </div>
-
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase"
-                                type="submit">Submit</button>
-                            <a href="{{url('/signUp/list')}}" class="btn btn-lg btn-primary btn-block text-uppercase"
-                                role="button">List User</a>
-                        </form>
+  <div class="col">
+    <form method="POST" action="{{ url('signup/update/' ~ session.get('auth')['id_user']) }}" autocomplete="off" class="form-signin">
+      <div class="row">
+        <div class="col mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="e-profile">
+                <div class="row">
+                  <!-- <div class="col-12 col-sm-auto mb-3">
+                    <div class="mx-auto" style="width: 140px;">
+                      <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                      </div>
                     </div>
+                  </div> -->
+                  <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                      <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ session.get('auth')['nama'] }}</h4>
+                      <p class="mb-0">{{ session.get('auth')['username'] }}</p>
+                      <div class="mt-2">
+                        <!-- <button class="btn btn-primary" type="button">
+                          <i class="fa fa-fw fa-camera"></i>
+                          <span>Change Photo</span>
+                        </button> -->
+                      </div>
+                    </div>
+                    <!-- <div class="text-center text-sm-right">
+                      <span class="badge badge-secondary">administrator</span>
+                      <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
+                    </div> -->
+                  </div>
                 </div>
+                <ul class="nav nav-tabs">
+                  <li class="nav-item"><a href="" class="active nav-link">Edit Profile</a></li>
+                </ul>
+                <div class="tab-content pt-3">
+                  <div class="tab-pane active">
+                    <form class="form" novalidate="">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="nama">Nama Lengkap</label>
+                                <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama Lengkap" value="{{user.nama}}">
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" placeholder="Username" value="{{user.username}}">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="email">Email</label>
+                                <input class="form-control" type="text" id="email" name="email" placeholder="Email" value="{{user.email}}">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label for="no_hp">Nomor Handphone</label>
+                                <input class="form-control" name="no_hp" id="no_hp" placeholder="Nomor Handphone" type="text" value="{{user.no_hp}}"></input>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col mb-3">
+                              <div class="form-group">
+                                <label>Alamat</label>
+                                <input class="form-control" id="alamat" name="alamat" placeholder="Alamat Lengkap" type="text" value="{{user.alamat}}"></input>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-6 mb-3">
+                          <!-- <div class="mb-2"><b>Change Password</b></div> -->
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password" name="pass" placeholder="Password Anda" required>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>New Password</label>
+                                <input class="form-control" type="password" name="newpass" placeholder="New Password">
+                              </div>
+                            </div>
+                          </div> -->
+                          <!-- <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                                <input class="form-control" type="password" placeholder="••••••"></div>
+                            </div>
+                          </div> -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col d-flex justify-content-end">
+                          <button  class="btn btn-primary" type="submit">Save Changes</button>
+                          <!-- <button class="btn btn-primary" type="submit"></button> -->
+                        </div>
+                      </div>
+                    </form>
+                    <!-- method="post" action="{{ url('signUp/update/' ~ user.id_user) }}" -->
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</body>
 
-</html>
+        <div class="col-12 col-md-3 mb-3">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="px-xl-3">
+                <a type="button" class="btn btn-block btn-secondary" href="{{url('Session/logout')}}">
+                  <i class="fa fa-sign-out"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+</div>

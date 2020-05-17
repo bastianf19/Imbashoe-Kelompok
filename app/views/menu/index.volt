@@ -153,10 +153,10 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h3 class="card-title text-center"><a href=""><img src="/public/img/logo.png"
-                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | &nbsp;<?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
-                            <a href="{{url('/signUp/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
-                            <a href="{{url('/Produk/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
+                        <h3 class="card-title text-center"><a href=""><img src="/public/img/Logoimba.png"
+                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | {{ session.get('auth')['nama'] }} <?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
+                            <a href="{{url('/signup/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
+                            <a href="{{url('/produk/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
                     </div>
                 </div>
             </div>

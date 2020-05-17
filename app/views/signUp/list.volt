@@ -156,6 +156,16 @@
                         <h3 class="card-title text-center"><a href=""><img src="/public/img/logo.png"
                                     style="max-height: 300px; max-width: 300px;"></a><br>List User | Quantity: <?php echo $users->count(); ?>
                         </h3>
+                        <form method="POST" autocomplete="off" action="{{url('signup/cari')}}">
+                        
+                            <div class="input-group mb-4">
+                                <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User"
+                                    aria-label="Cari User">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary btn-block" type="submit">Cari</button>
+                                </div>
+                            </div>
+                        </form>
                         <table class="table table-bordered table-hover">
                             <thead class="thead-light">
                                 <tr>
@@ -175,8 +185,8 @@
                                     <td><?php echo $user->email; ?></td>
                                     <td><?php echo $user->alamat; ?></td>
                                     <td><?php echo $user->no_hp; ?></td>
-                                    <td><a href="{{ url('signUp/edit/' ~ user.id_user) }}" class='btn btn-primary btn-block'>Edit</a><br>
-                                    <a href="{{ url('signUp/hapus/' ~ user.id_user) }}" class='btn btn-primary btn-block'>Hapus</a></td>
+                                    <td><a href="{{ url('signup/edit/' ~ user.id_user) }}" class='btn btn-primary btn-block'>Edit</a><br>
+                                    <a href="{{ url('signup/hapus/' ~ user.id_user) }}" class='btn btn-primary btn-block'>Hapus</a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -185,7 +195,7 @@
                             <div class="row">
                                 <div class="col text-center">
                                     <a href="{{url('/menu')}}" class="btn btn-lg btn-outline-primary" role="button">Menu</a> &emsp;
-                                    <a href="{{url('/signUp')}}" class="btn btn-lg btn-outline-primary" role="button">Tambah User</a>
+                                    <a href="{{url('/signup')}}" class="btn btn-lg btn-outline-primary" role="button">Tambah User</a>
                                 </div>
                             </div>
                         </div>

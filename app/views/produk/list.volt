@@ -153,11 +153,11 @@
             <div class="col-sm-300 col-md-150 col-lg-300 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h3 class="card-title text-center"><a href=""><img src="/public/img/logo.png"
+                        <h3 class="card-title text-center"><a href=""><img src="/img/Logoimba.png"
                                     style="max-height: 300px; max-width: 300px;"></a><br>List Produk | Quantity:
                             <?php echo $produk->count(); ?>
                         </h3>
-                        <form method="POST" autocomplete="off" action="{{url('Produk/cari')}}" >
+                        <form method="POST" autocomplete="off" action="{{url('produk/cari')}}" >
 
                         <div class="input-group mb-4">
                             <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari Produk" aria-label="Cari Produk">
@@ -190,7 +190,7 @@
                                     <td>{{ prod.harga_produk }}</td>
                                     <td>{{ prod.status_produk }}</td>
                                     <td><a href="{{ url('Produk/edit/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
-                                        <a href="{{ url('Produk/hapus/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Hapus</a></td>
+                                        <a href="{{ url('produk/hapus/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Hapus</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
