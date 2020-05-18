@@ -183,7 +183,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center">
-                                    <a href="<?= $this->url->get('/menu') ?>" class="btn btn-lg btn-outline-primary"
+                                    <a href="<?= $this->url->get('/admin') ?>" class="btn btn-lg btn-outline-primary"
                                         role="button">Menu</a>
                                     <a href="<?= $this->url->get('/produk/list') ?>" class="btn btn-lg btn-outline-primary"
                                         role="button">List Produk</a>

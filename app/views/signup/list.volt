@@ -153,7 +153,7 @@
             <div class="col-sm-300 col-md-150 col-lg-300 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body ">
-                        <h3 class="card-title text-center"><a href=""><img src="/public/img/logo.png"
+                        <h3 class="card-title text-center"><a href=""><img src="/img/Logoimba.png"
                                     style="max-height: 300px; max-width: 300px;"></a><br>List User | Quantity: <?php echo $users->count(); ?>
                         </h3>
                         <form method="POST" autocomplete="off" action="{{url('signup/cari')}}">
@@ -194,7 +194,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center">
-                                    <a href="{{url('/menu')}}" class="btn btn-lg btn-outline-primary" role="button">Menu</a> &emsp;
+                                    <a href="{{url('/admin')}}" class="btn btn-lg btn-outline-primary" role="button">Menu</a> &emsp;
                                     <a href="{{url('/signup')}}" class="btn btn-lg btn-outline-primary" role="button">Tambah User</a>
                                 </div>
                             </div>

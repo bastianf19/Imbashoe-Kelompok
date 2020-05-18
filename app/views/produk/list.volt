@@ -189,7 +189,7 @@
                                     <td>{{ prod.deskripsi_produk }}</td>
                                     <td>{{ prod.harga_produk }}</td>
                                     <td>{{ prod.status_produk }}</td>
-                                    <td><a href="{{ url('Produk/edit/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                                    <td><a href="{{ url('produk/edit/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
                                         <a href="{{ url('produk/hapus/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Hapus</a></td>
                                 </tr>
                                 {% endfor %}
@@ -198,7 +198,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center">
-                                    <a href="{{url('/menu')}}" class="btn btn-lg btn-outline-primary"
+                                    <a href="{{url('/admin')}}" class="btn btn-lg btn-outline-primary"
                                         role="button">Menu</a> &emsp;
                                     <a href="{{url('/produk')}}" class="btn btn-lg btn-outline-primary" role="button">Tambah Produk</a>
                                 </div>

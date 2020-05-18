@@ -104,7 +104,7 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span>2 Items</span>
-										<a href="#">View Wishlist</a>
+										<a href="{{url('produk/listwish/')}}">View Wishlist</a>
 									</div>
 									<ul class="shopping-list">
 										<li>
@@ -112,6 +112,7 @@
 											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
 											<h4><a href="#">Woman Ring</a></h4>
 											<p class="quantity">1x - <span class="amount">$99.00</span></p>
+											
 										</li>
 										<li>
 											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
@@ -125,7 +126,7 @@
 											<span>Total</span>
 											<span class="total-amount">$134.00</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Lihat Selengkapnya</a>
+										<a href="{{url('produk/listwish/')}}" class="btn animate">Lihat Selengkapnya</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->

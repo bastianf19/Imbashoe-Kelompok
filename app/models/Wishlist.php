@@ -21,7 +21,7 @@ class Wishlist extends Model
         $this->setSchema('imbashoe_kelompok');
 
         // Untuk mengeset nama tabel, default : nama class
-        $this->setSource('Wishlist');
+        $this->setSource('wishlist');
 
         $this->belongsTo(
             'id_produk',

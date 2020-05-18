@@ -131,7 +131,7 @@ class SignupController extends ControllerBase
             }
             else 
             {
-                echo $this->tag->linkTo(['/menu', 'menu', 'class' => 'btn btn-primary']);
+                echo $this->tag->linkTo(['/admin', 'Admin Home', 'class' => 'btn btn-primary']);
             }
         }
         else

@@ -8,8 +8,8 @@
         }
 
         body {
-            background: #01a2ff;
-            background: linear-gradient(to right, rgb(42, 195, 241), rgb(51, 116, 255));
+            background: #9900ff;
+            background: linear-gradient(to right, rgb(91, 4, 253), rgb(30, 5, 255));
         }
 
         .card-signin {
@@ -68,7 +68,6 @@
             display: block;
             width: 100%;
             margin-bottom: 0;
-            /* Override default `<label>` margin */
             line-height: 1.5;
             color: #495057;
             border: 1px solid transparent;
@@ -153,10 +152,59 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h3 class="card-title text-center"><a href=""><img src="/public/img/Logoimba.png"
-                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | {{ session.get('auth')['nama'] }} <?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
-                            <a href="{{url('/signup/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
-                            <a href="{{url('/produk/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
+                        <h3 class="card-title text-center"><a href=""><img src="/img/Logoimba.png"
+                                    style="max-height: 300px; max-width: 300px;"></a>Edit Produk</h3>
+                        <form method="POST" autocomplete="off" action="<?= $this->url->get('produk/update/' . $produk->id_produk) ?>" enctype="multipart/form-data">
+                            <div class="form-label-group">
+                                <input type="text" name='nama_produk' id="nama_produk" class="form-control" placeholder="Nama Produk"
+                                    required autofocus>
+                                <label for="nama_produk">Nama Produk</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" name='brand_produk' id="brand_produk" class="form-control" placeholder="Brand Produk"
+                                    required autofocus>
+                                <label for="brand_produk">Brand Produk</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input name="deskripsi_produk" id="deskripsi_produk" class="form-control" rows="2" placeholder="Deskripsi Produk" required
+                                    autofocus>
+                                <label for="deskripsi_produk">Deskripsi Produk</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" name='harga_produk' id="harga_produk" class="form-control"
+                                    placeholder="Harga Produk" required autofocus>
+                                <label for="harga_produk">Harga Produk</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" name='kategori' id="kategori" class="form-control"
+                                    placeholder="Kategori" required autofocus>
+                                <label for="kategori">kategori</label>
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Foto Produk</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="foto_produk" name='foto_produk'>
+                                    <label class="custom-file-label" for="foto_produk">Pilih File</label>
+                                </div>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" name='status_produk' id="status_produk" class="form-control" placeholder="Status Produk" required
+                                    autofocus>
+                                <label for="status_produk">Status Produk (0:Kosong, 1:Tersedia)</label>
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block"
+                                type="submit">Submit</button>
+                            <a href="<?= $this->url->get('/produk/list') ?>" class="btn btn-lg btn-primary btn-block"
+                                role="button">List Produk</a>
+                        </form>
                     </div>
                 </div>
             </div>

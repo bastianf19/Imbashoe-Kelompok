@@ -101,7 +101,7 @@ class SecurityPlugin extends Injectable
         $adminprivateResources = [
             'produk'        => ['index', 'tambah', 'cari', 'list', 'edit', 'update', 'hapus'],
             'Produk'        => ['index', 'tambah', 'cari', 'list', 'edit', 'update', 'hapus'],
-            'menu'          => ['index'],
+            'admin'          => ['index', 'editprofile', 'listuser', 'listproduk', 'cariproduk', 'editproduk', 'hapusproduk'],
             'Session'       => ['index', 'login', 'logout'],
             'signup'        => ['index', 'register', 'list', 'edit', 'update', 'cari', 'hapus'],
         ];

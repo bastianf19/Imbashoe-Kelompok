@@ -198,7 +198,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center">
-                                    <a href="{{url('/menu')}}" class="btn btn-lg btn-outline-primary"
+                                    <a href="{{url('/admin')}}" class="btn btn-lg btn-outline-primary"
                                         role="button">Menu</a> &emsp;
                                     <a href="{{url('/produk')}}" class="btn btn-lg btn-outline-primary" role="button">Tambah Produk</a>
                                 </div>

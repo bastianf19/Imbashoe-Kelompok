@@ -49,7 +49,7 @@ class SessionController extends \Phalcon\Mvc\Controller
                 $auth = $this->session->get('auth')['peran'];
                 if($auth == 'admin')
                 {
-                    $this->response->redirect('/menu');
+                    $this->response->redirect('/admin');
                 }
                 else
                 {

@@ -194,7 +194,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center">
-                                    <a href="<?= $this->url->get('/menu') ?>" class="btn btn-lg btn-outline-primary" role="button">Menu</a> &emsp;
+                                    <a href="<?= $this->url->get('/admin') ?>" class="btn btn-lg btn-outline-primary" role="button">Menu</a> &emsp;
                                     <a href="<?= $this->url->get('/signup') ?>" class="btn btn-lg btn-outline-primary" role="button">Tambah User</a>
                                 </div>
                             </div>
