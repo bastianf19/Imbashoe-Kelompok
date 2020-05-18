@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\Users as Users;
 use App\Models\Produk as Produk;
 use App\Validation\UserValidation as UserValidation;
+use App\Validation\ProdukValidation as ProdukValidation;
 
 use Phalcon\Mvc\Controller;
 
@@ -17,6 +18,9 @@ class AdminController extends ControllerBase
         $this->view->produk = Produk::find();
         $user = new Users();
         $this->view->users = Users::find("peran = 'user'");
+        $admin = new Users();
+        $this->view->admin = Users::find("peran = 'admin'");
+        
     }
     public function editprofileAction($id_user)
     {

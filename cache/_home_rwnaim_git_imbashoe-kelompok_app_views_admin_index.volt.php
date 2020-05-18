@@ -255,81 +255,78 @@
                   <div class="d-flex justify-content-between">
                     <h3 class="card-title">Jumlah User</h3>
                   </div>
-                  <p class="card-description">What's people doing right now</p>
+                  <h5 class="card-description">Total : <?php echo $users->count(); ?></h5>
+                  <?php foreach ($users as $user) { ?>
                   <div class="list d-flex align-items-center border-bottom py-3">
                     <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
                     <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Dobrick </b>posted in Material</p>
+                      <p class="mb-0"><b><?php echo $user->username; ?> </b>telah terdaftar sebagai pengguna baru</p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
                           <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Awesome!</p>
+                          <p class="mb-0"><?php echo $user->email; ?></p>
                         </div>
-                        <small class="text-muted ml-auto">2 hours ago</small>
+                        <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
                       </div>
                     </div>
                   </div>
-                  <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Stella </b>posted in Material</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Awesome!</p>
-                        </div>
-                        <small class="text-muted ml-auto">3 hours ago</small>
-                      </div>
+                  <?php } ?>
+                  <br>
+                    <div class="btn-group mr-2">
+                      <a href="<?= $this->url->get('/admin/listuser') ?>"><button class="btn btn-primary">Selengkapnya</button></a>
                     </div>
-                  </div>
-                  <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Peter </b>posted in Material</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Great!</p>
-                        </div>
-                        <small class="text-muted ml-auto">1 hours ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list d-flex align-items-center pt-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Nateila </b>posted in Material</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Awesome!</p>
-                        </div>
-                        <small class="text-muted ml-auto">1 hours ago</small>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h6 class="card-title">Sales Difference</h6>
-                  <p>Sales difference with last year</p>
+                  <h3 class="card-title">Jumlah Produk</h3>
+                  <h5 class="card-description">Total : <?php echo $produk->count(); ?></h5>
+                  <?php foreach ($produk as $prod) { ?>
+                    <div class="list d-flex align-items-center border-bottom py-3">
+                      <img class="img-sm rounded-circle" src="<?= $this->url->get($prod->foto_produk) ?>" alt="">
+                      <div class="wrapper w-100 ml-3">
+                        <p class="mb-0"><b><?= $prod->nama_produk ?> </b>telah ditambahkan sebagai produk</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center">
+                            <i class="mdi mdi-clock text-muted mr-1"></i>
+                            <p class="mb-0">Harga : <?= $prod->harga_produk ?></p>
+                          </div>
+                          <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
+                        </div>
+                      </div>
+                    </div>
+                    <?php } ?>
+                    <br>
+                    <div class="btn-group mr-2">
+                      <a href="<?= $this->url->get('/admin/listproduk') ?>"><button class="btn btn-primary">Selengkapnya</button></a>
+                    </div>
+
                 </div>
-                <div id="morris-area-example"></div>
               </div>
             </div>
             <div class="col-lg-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h6 class="card-title">Sales Chart</h6>
-                  <p class="card-description">Based on last month analytics.</p>
-                  <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-secondary">2015</button>
-                    <button type="button" class="btn btn-outline-secondary">2016</button>
-                  </div>
-                  <div id="morris-dashboard-bar-chart" style="height:250px;"></div>
+                  <h3 class="card-title">Jumlah Admin</h3>
+                  <h5 class="card-description">Total : <?php echo $admin->count(); ?></h5>
+                  <?php foreach ($admin as $user) { ?>
+                    <div class="list d-flex align-items-center border-bottom py-3">
+                      <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
+                      <div class="wrapper w-100 ml-3">
+                        <p class="mb-0"><b><?php echo $user->nama; ?> </b>telah terdaftar sebagai pengguna baru</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center">
+                            <i class="mdi mdi-clock text-muted mr-1"></i>
+                            <p class="mb-0"><?php echo $user->email; ?></p>
+                          </div>
+                          <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
+                        </div>
+                      </div>
+                    </div>
+                    <?php } ?>
+                    
                 </div>
               </div>
             </div>
