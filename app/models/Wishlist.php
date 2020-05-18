@@ -18,10 +18,10 @@ class Wishlist extends Model
         $this->setWriteConnectionService('db');
 
         // Untuk mengeset schema, default : empty string
-        $this->setSchema('dbo');
+        $this->setSchema('imbashoe_kelompok');
 
         // Untuk mengeset nama tabel, default : nama class
-        $this->setSource('wishlist');
+        $this->setSource('Wishlist');
 
         $this->belongsTo(
             'id_produk',

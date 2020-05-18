@@ -68,7 +68,7 @@ class Produk extends Model
 
         // write data ke db
         $this->setWriteConnectionService('db');
-        $this->setSchema("dbo");
+        $this->setSchema("imbashoe_kelompok");
         $this->setSource("produk");
 
         $this->hasManyToMany(

@@ -7,7 +7,7 @@
 	<meta name='copyright' content=''>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	{{ assets.outputCss() }}	
+	<?= $this->assets->outputCss() ?>	
 	<!-- Title Tag  -->
     <title>Imbashoe</title>
 	<!-- Favicon -->
@@ -17,9 +17,9 @@
 	
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="{{ static_url('css/signin.css') }}" type="text/css">
+	<link rel="stylesheet" href="<?= $this->url->getStatic('css/signin.css') ?>" type="text/css">
 	
-    <!-- <link rel="stylesheet" href="{{ static_url('css/fontawesome.min.css') }}" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="<?= $this->url->getStatic('css/fontawesome.min.css') ?>" type="text/css"> -->
 </head>
 <body class="js">	
 	<!-- Header -->
@@ -40,7 +40,7 @@
 							<div class="top-search"><a href="#"><img src="/SVG/search-white.svg"width="20px"></a></div>
 							<!-- Search Form -->
 							<div class="search-top">
-								<form method="POST" autocomplete="off"  action="{{ url('produk/cari') }}">
+								<form method="POST" autocomplete="off"  action="<?= $this->url->get('produk/cari') ?>">
 									<input type="text" placeholder="Search here..." name="nama">
 									<button class="btnn"  type="button"><img class="searchsvg" src="/SVG/search-white.svg" width="20px"></button>
 								</form>
@@ -54,7 +54,7 @@
 						<div class="search-bar-top">
 							<div class="search-bar ">
 								
-								<form method="POST" autocomplete="off"  action="{{ url('produk/cari') }}">
+								<form method="POST" autocomplete="off"  action="<?= $this->url->get('produk/cari') ?>">
 									<input name="nama" placeholder="Search Products Here....." type="nama">
 								</form>
 								<select class="form-control" id="form_control">
@@ -63,7 +63,7 @@
 									<option>Women</option>
 									<option>Kids item</option>
 								</select>
-								<form method="POST" autocomplete="off"  action="{{ url('produk/cari') }}">
+								<form method="POST" autocomplete="off"  action="<?= $this->url->get('produk/cari') ?>">
 									<button class="btnn"><img class="searchsvg" src="SVG/search-white.svg" width="20px"></button>
 								</form>
 								
@@ -81,14 +81,14 @@
 										<p class="signin-text">Profile</p>
 										<div class="sign-form">
 											<div>
-												<a>Halo <strong>{{ session.get('auth')['nama'] }}</strong>, selamat datang di <strong>Imbashoe</strong></a>
+												<a>Halo <strong><?= $this->session->get('auth')['nama'] ?></strong>, selamat datang di <strong>Imbashoe</strong></a>
 												
 											</div>
 											<div>
-												<a href="{{ url('/signup/edit/' ~ session.get('auth')['id_user']) }}">Edit Profile</a>
+												<a href="<?= $this->url->get('/signup/edit/' . $this->session->get('auth')['id_user']) ?>">Edit Profile</a>
 											</div>
 											<div>
-												<a href="{{url('Session/logout')}}">Logout</a>
+												<a href="<?= $this->url->get('Session/logout') ?>">Logout</a>
 											</div>
 										  
 										</div>
@@ -210,7 +210,7 @@
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-												<!-- <a href="{{ url('/produk')}}" type="button" class="btn-sm btn-primary">Produk</a> -->
+												<!-- <a href="<?= $this->url->get('/produk') ?>" type="button" class="btn-sm btn-primary">Produk</a> -->
 													<li class="active"><a href="/home">Home</a></li>
 													<li><a href="#">Product</a></li>												
 													<li><a href="#">Service</a></li>
@@ -300,12 +300,12 @@
 									
 								<div class="tab-single">
 									<div class="row">
-										{% for prod in produk %}
+										<?php foreach ($produk as $prod) { ?>
 										<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="{{ url('/produk/detail/' ~ prod.id_produk) }}">
-														<img class="default-img" src="{{url(prod.foto_produk)}}" alt="#">
+													<a href="<?= $this->url->get('/produk/detail/' . $prod->id_produk) ?>">
+														<img class="default-img" src="<?= $this->url->get($prod->foto_produk) ?>" alt="#">
 														<!-- <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#"> -->
 													</a>
 													<div class="button-head">
@@ -315,19 +315,19 @@
 															<!--  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>   -->
 														</div>
 														<div class="product-action-2">
-															<a title="Tambahkan ke Wishlist" href="{{ url('/produk/detail/' ~ prod.id_produk) }}">Lihat Selengkapnya</a>
+															<a title="Tambahkan ke Wishlist" href="<?= $this->url->get('/produk/detail/' . $prod->id_produk) ?>">Lihat Selengkapnya</a>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="#">{{ prod.nama_produk }}</a></h3>
+													<h3><a href="#"><?= $prod->nama_produk ?></a></h3>
 													<div class="product-price">
-														<span>Rp {{ prod.harga_produk }}</span>
+														<span>Rp <?= $prod->harga_produk ?></span>
 													</div>
 												</div>
 											</div>
 										</div>
-										{% endfor %}
+										<?php } ?>
 									</div>
 								</div>
 								
@@ -339,12 +339,12 @@
 								
 								<div class="tab-single">
 									<div class="row">
-										{% for prod in produk %}
+										<?php foreach ($produk as $prod) { ?>
 										<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="{{ url('/produk/detail/' ~ prod.id_produk) }}">
-														<img class="default-img" src="{{url(prod.foto_produk)}}" alt="#">
+													<a href="<?= $this->url->get('/produk/detail/' . $prod->id_produk) ?>">
+														<img class="default-img" src="<?= $this->url->get($prod->foto_produk) ?>" alt="#">
 														<!-- <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#"> -->
 													</a>
 													<div class="button-head">
@@ -354,19 +354,19 @@
 															<!--  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>   -->
 														</div>
 														<div class="product-action-2">
-															<a title="Tambahkan ke Wishlist" href="{{ url('/produk/detail/' ~ prod.id_produk) }}">Lihat Selengkapnya</a>
+															<a title="Tambahkan ke Wishlist" href="<?= $this->url->get('/produk/detail/' . $prod->id_produk) ?>">Lihat Selengkapnya</a>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="#">{{ prod.nama_produk }}</a></h3>
+													<h3><a href="#"><?= $prod->nama_produk ?></a></h3>
 													<div class="product-price">
-														<span>Rp {{ prod.harga_produk }}</span>
+														<span>Rp <?= $prod->harga_produk ?></span>
 													</div>
 												</div>
 											</div>
 										</div>
-										{% endfor %}
+										<?php } ?>
 									</div>
 								</div>
 								
@@ -377,12 +377,12 @@
 								
 								<div class="tab-single">
 									<div class="row">
-										{% for prod in produk %}
+										<?php foreach ($produk as $prod) { ?>
 										<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 											<div class="single-product">
 												<div class="product-img">
-													<a href="{{ url('/produk/detail/' ~ prod.id_produk) }}">
-														<img class="default-img" src="{{url(prod.foto_produk)}}" alt="#">
+													<a href="<?= $this->url->get('/produk/detail/' . $prod->id_produk) ?>">
+														<img class="default-img" src="<?= $this->url->get($prod->foto_produk) ?>" alt="#">
 														<!-- <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#"> -->
 													</a>
 													<div class="button-head">
@@ -392,19 +392,19 @@
 															<!--  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>   -->
 														</div>
 														<div class="product-action-2">
-															<a title="Tambahkan ke Wishlist" href="{{ url('/produk/detail/' ~ prod.id_produk) }}">Lihat Selengkapnya</a>
+															<a title="Tambahkan ke Wishlist" href="<?= $this->url->get('/produk/detail/' . $prod->id_produk) ?>">Lihat Selengkapnya</a>
 														</div>
 													</div>
 												</div>
 												<div class="product-content">
-													<h3><a href="#">{{ prod.nama_produk }}</a></h3>
+													<h3><a href="#"><?= $prod->nama_produk ?></a></h3>
 													<div class="product-price">
-														<span>Rp {{ prod.harga_produk }}</span>
+														<span>Rp <?= $prod->harga_produk ?></span>
 													</div>
 												</div>
 											</div>
 										</div>
-										{% endfor %}
+										<?php } ?>
 									</div>
 								</div>
 								

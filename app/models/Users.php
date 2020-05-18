@@ -90,7 +90,7 @@ class Users extends \Phalcon\Mvc\Model
 
         // write data ke db
         $this->setWriteConnectionService('db');
-        $this->setSchema("dbo");
+        $this->setSchema("imbashoe_kelompok");
         $this->setSource("Users");
 
         $this->hasMany(

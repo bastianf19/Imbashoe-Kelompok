@@ -30,6 +30,6 @@ CREATE TABLE wishlist
     id_produk INT,
     id_user INT,
     PRIMARY KEY (id_wishlist),
-    FOREIGN KEY (id_produk) REFERENCES produk(id_produk)
+    FOREIGN KEY (id_produk) REFERENCES produk(id_produk),
     FOREIGN KEY (id_user) REFERENCES users(id_user)
 );
