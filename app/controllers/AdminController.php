@@ -38,8 +38,8 @@ class AdminController extends ControllerBase
     public function editprodukAction($id_produk)
     {
         $editProduk = Produk::findFirstByid_produk($id_produk);
-        $this->view->produk = $editProduk;
-        echo $this->tag->linkTo(['/admin/listproduk', 'List Produk', 'class' => 'btn btn-lg btn-outline-primary']);
+        $this->view->prod = $editProduk;
+        // echo $this->tag->linkTo(['/admin/listproduk', 'List Produk', 'class' => 'btn btn-lg btn-outline-primary']);
 
         $produk = new Produk();
         $this->view->produk = Produk::find();
