@@ -26,25 +26,7 @@
         </button>
         <ul class="navbar-nav">
           <li class="nav-item dropdown d-none d-lg-flex">
-            <a class="nav-link dropdown-toggle nav-btn" id="actionDropdown" href="#" data-toggle="dropdown">
-              <span class="btn">+ Create admin</span>
-            </a>
-            <div class="dropdown-menu navbar-dropdown dropdown-left" aria-labelledby="actionDropdown">
-              <a class="dropdown-item" href="#">
-                <i class="icon-user text-primary"></i>
-                User Account
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-user-following text-warning"></i>
-                Admin User
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-docs text-success"></i>
-                Sales report
-              </a>
-            </div>
+            <h3>Halaman Admin</h3>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
@@ -180,7 +162,7 @@
               <div class="nav-link">
                 <div class="profile-image">
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image"/>
-                  <span class="online-status online"></span> <!--change class online to offline or busy as needed-->
+                  <span class="online-status online"></span> 
                 </div>
                 <div class="profile-name">
                   <p class="name">
@@ -194,7 +176,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="<?= $this->url->get('/admin/edit/' . $this->session->get('auth')['id_user']) ?>"">
+              <a class="nav-link" href="<?= $this->url->get('/admin/editprofile/' . $this->session->get('auth')['id_user']) ?>"">
                 <i class="fas fa-edit menu-icon"></i>
                 <span class="menu-title">Edit Profile</span>
               </a>
@@ -206,14 +188,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= $this->url->get('/signup/list') ?>">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="<?= $this->url->get('/produk/list') ?>">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
@@ -252,10 +234,10 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h6 class="card-title">List User</h6>
+                  <b><h1 class="card-title text-center">List User</h1></b>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="<?= $this->url->get('/signup') ?>"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add</button></a>
+                      
                     </div>
                     <!-- <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>"> -->
                       <div class="btn-group ml-auto mr-2 border-0">

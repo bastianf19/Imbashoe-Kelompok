@@ -72,6 +72,52 @@ class AdminController extends ControllerBase
         $this->view->users = Users::find("peran = 'user'");
     }
 
+    public function tambahprodukAction()
+    {
+        $produk = new Produk();
+
+        //assign value from the form to $user
+        $produk->assign(
+            $this->request->getPost(),
+            [
+                'nama_produk',
+                'brand_produk',
+                'deskripsi_produk',
+                'harga_produk',
+                'kategori',
+                'status_produk',
+            ]
+        );
+        if($this->request->hasFiles())
+        {
+            $img = $this->request->getUploadedFiles()[0];
+            $path = 'img/'.$img->getName();
+            $produk->foto_produk = $path;
+            $img->moveTo($path);
+        }
+
+        // Store and check for errors
+        $success = $produk->save();
+
+        // passing the result to the view
+        $this->view->success = $success;
+
+        if ($success) {
+            $message = "Produk berhasil ditambahkan.";
+        } else {
+            $message = "Terdapat kesalahan ketika menambahkan produk:<br>"
+                     . implode('<br>', $produk->getMessages());
+        }
+
+        // passing a message to the view
+        $this->view->message = $message;
+
+        $user = new Users();
+        $this->view->users = Users::find("peran = 'user'");
+        $produk = new Produk();
+        $this->view->produk = Produk::find();
+    }
+
     public function hapusprodukAction($id_user)
     {
         $prod = Produk::findFirstByid_produk($id_produk);
@@ -94,6 +140,14 @@ class AdminController extends ControllerBase
         $produk = new Produk();
         $this->view->produk = Produk::find();
     }
+    public function listprodukAction()
+    {
+        $user = new Users();
+        $this->view->users = Users::find("peran = 'user'");
+        $produk = new Produk();
+        $this->view->produk = Produk::find();
+    }
+    
 }
 
 

@@ -7473,7 +7473,7 @@
   --success: #00c292;
   --info: #ab8ce4;
   --warning: #ffb463;
-  --danger: #fb9678;
+  --danger: #f32222;
   --light: #ffffff;
   --dark: #3a3f51;
   --breakpoint-xs: 0;
@@ -7659,7 +7659,7 @@ textarea {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
-  line-height: inherit; }
+  line-height: normal; }
 
 button,
 input {
@@ -8686,7 +8686,7 @@ pre {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar; }
     .table-responsive-xl > .table-bordered {
-      border: 0; } }
+      border: 3; } }
 
 .table-responsive {
   display: block;
@@ -8695,19 +8695,23 @@ pre {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
   .table-responsive > .table-bordered {
-    border: 0; }
+    border: 1; }
 
 .form-group .form-control{
-  font-size: 15px;
+  font-size: 18px;
+  line-height: normal;
 }
 
+.form-group select{
+  height: 150px;
+}
 .form-control, .asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text],
 .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead,
 .tt-query,
 .tt-hint {
   display: block;
   width: 100%;
-  height: 3rem;
+  height: 3.5rem;
   padding: 0.56rem 0.56rem;
   font-size: 1.125rem;
   line-height: 1;
@@ -8791,7 +8795,7 @@ select.tt-hint:focus::-ms-value {
   padding-top: 0.56rem;
   padding-bottom: 0.56rem;
   margin-bottom: 0;
-  line-height: 1;;
+  line-height: 1;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0; }
@@ -8901,7 +8905,7 @@ select.tt-hint:not([size]):not([multiple]),
 .input-group-lg > .input-group-append > select.btn:not([size]):not([multiple]), .ajax-upload-dragdrop
 .input-group-lg > .input-group-append > select.ajax-file-upload:not([size]):not([multiple]), .swal2-modal .swal2-buttonswrapper
 .input-group-lg > .input-group-append > select.swal2-styled:not([size]):not([multiple]) {
-  height: calc(2.875rem + 2px); }
+  height: calc(3.2rem + 5px); }
 
 .form-group {
   margin-bottom: 1.125rem; }
@@ -9461,25 +9465,25 @@ fieldset:disabled a {
       box-shadow: 0 0 0 0.2rem rgba(58, 63, 81, 0.5); }
 
 .btn-outline-primary, .wizard > .actions .disabled a {
-  color: #03a9f3;
+  color: #5f03f3;
   background-color: transparent;
   background-image: none;
-  border-color: #03a9f3; }
+  border-color: #4c01c5; }
   .btn-outline-primary:hover, .wizard > .actions .disabled a:hover {
     color: #fff;
-    background-color: #03a9f3;
-    border-color: #03a9f3; }
+    background-color: #5603db;
+    border-color: #4b01c2; }
   .btn-outline-primary:focus, .wizard > .actions .disabled a:focus, .btn-outline-primary.focus, .wizard > .actions .disabled a.focus {
     box-shadow: 0 0 0 0.2rem rgba(3, 169, 243, 0.5); }
   .btn-outline-primary.disabled, .wizard > .actions .disabled a.disabled, .btn-outline-primary:disabled, .wizard > .actions .disabled a:disabled {
-    color: #03a9f3;
+    color: #5f03f3;
     background-color: transparent; }
   .btn-outline-primary:not(:disabled):not(.disabled):active, .wizard > .actions .disabled a:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .wizard > .actions .disabled a:not(:disabled):not(.disabled).active,
   .show > .btn-outline-primary.dropdown-toggle, .wizard > .actions .disabled
   .show > a.dropdown-toggle {
     color: #fff;
-    background-color: #03a9f3;
-    border-color: #03a9f3; }
+    background-color: #5f03f3;
+    border-color: #5f03f3; }
     .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .wizard > .actions .disabled a:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .wizard > .actions .disabled a:not(:disabled):not(.disabled).active:focus,
     .show > .btn-outline-primary.dropdown-toggle:focus, .wizard > .actions .disabled
     .show > a.dropdown-toggle:focus {
@@ -9578,14 +9582,14 @@ fieldset:disabled a {
       box-shadow: 0 0 0 0.2rem rgba(255, 180, 99, 0.5); }
 
 .btn-outline-danger {
-  color: #fb9678;
-  background-color: transparent;
+  color: #ff0000;
+  background-color: transparent; 
   background-image: none;
-  border-color: #fb9678; }
+  border-color: #d10000; }
   .btn-outline-danger:hover {
-    color: #212529;
-    background-color: #fb9678;
-    border-color: #fb9678; }
+    color: #ffffff;
+    background-color: #ff0000;
+    border-color: #d10000; }
   .btn-outline-danger:focus, .btn-outline-danger.focus {
     box-shadow: 0 0 0 0.2rem rgba(251, 150, 120, 0.5); }
   .btn-outline-danger.disabled, .btn-outline-danger:disabled {
@@ -9593,9 +9597,9 @@ fieldset:disabled a {
     background-color: transparent; }
   .btn-outline-danger:not(:disabled):not(.disabled):active, .btn-outline-danger:not(:disabled):not(.disabled).active,
   .show > .btn-outline-danger.dropdown-toggle {
-    color: #212529;
-    background-color: #fb9678;
-    border-color: #fb9678; }
+    color: #ffffff;
+    background-color: #ff0000;
+    border-color: #d10000; }
     .btn-outline-danger:not(:disabled):not(.disabled):active:focus, .btn-outline-danger:not(:disabled):not(.disabled).active:focus,
     .show > .btn-outline-danger.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(251, 150, 120, 0.5); }
@@ -10668,7 +10672,7 @@ tbody.collapse.show {
   right: 0;
   left: 0;
   z-index: 1;
-  height: calc(2.25rem + 2px);
+  height: calc(3rem + 2px);
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
   color: #495057;
@@ -10682,12 +10686,13 @@ tbody.collapse.show {
     bottom: 0;
     z-index: 3;
     display: block;
-    height: calc(calc(2.25rem + 2px) - 1px * 2);
-    padding: 0.375rem 0.75rem;
-    line-height: 1.5;
-    color: #495057;
+    height: calc(calc(3rem + 2px) - 1px * 2);
+    padding: 0.75rem 1rem;
+    line-height: 1.25;
+    font-size: 20px;
+    color: #fff;
     content: "Browse";
-    background-color: #e9ecef;
+    background-color: #4421dd;
     border-left: 1px solid #ced4da;
     border-radius: 0 0.25rem 0.25rem 0; }
 
@@ -16457,7 +16462,7 @@ code {
   .btn.btn-sm, .btn-group-sm > .btn, .ajax-upload-dragdrop .btn-group-sm > .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group-sm > .swal2-styled, .wizard > .actions .btn-group-sm > a, .ajax-upload-dragdrop .btn-sm.ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-sm.swal2-styled, .wizard > .actions a.btn-sm {
     font-size: 0.875rem; }
   .btn.btn-lg, .btn-group-lg > .btn, .ajax-upload-dragdrop .btn-group-lg > .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group-lg > .swal2-styled, .wizard > .actions .btn-group-lg > a, .ajax-upload-dragdrop .btn-lg.ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-lg.swal2-styled, .wizard > .actions a.btn-lg {
-    font-size: 0.875rem; }
+    font-size: 1.125rem; }
   .btn.btn-xs, .ajax-upload-dragdrop .btn-xs.ajax-file-upload, .ajax-upload-dragdrop .editable-container.editable-inline .editableform .control-group .editable-buttons .ajax-file-upload.editable-submit, .editable-container.editable-inline .editableform .control-group .editable-buttons .ajax-upload-dragdrop .ajax-file-upload.editable-submit, .ajax-upload-dragdrop .editable-container.editable-inline .editableform .control-group .editable-buttons .ajax-file-upload.editable-cancel, .editable-container.editable-inline .editableform .control-group .editable-buttons .ajax-upload-dragdrop .ajax-file-upload.editable-cancel, .swal2-modal .swal2-buttonswrapper .btn-xs.swal2-styled, .swal2-modal .swal2-buttonswrapper .editable-container.editable-inline .editableform .control-group .editable-buttons .swal2-styled.editable-submit, .editable-container.editable-inline .editableform .control-group .editable-buttons .swal2-modal .swal2-buttonswrapper .swal2-styled.editable-submit, .swal2-modal .swal2-buttonswrapper .editable-container.editable-inline .editableform .control-group .editable-buttons .swal2-styled.editable-cancel, .editable-container.editable-inline .editableform .control-group .editable-buttons .swal2-modal .swal2-buttonswrapper .swal2-styled.editable-cancel, .editable-container.editable-inline .editableform .control-group .editable-buttons .btn.editable-submit, .editable-container.editable-inline .editableform .control-group .editable-buttons .wizard > .actions a.editable-submit, .wizard > .actions .editable-container.editable-inline .editableform .control-group .editable-buttons a.editable-submit, .editable-container.editable-inline .editableform .control-group .editable-buttons .btn.editable-cancel, .editable-container.editable-inline .editableform .control-group .editable-buttons .wizard > .actions a.editable-cancel, .wizard > .actions .editable-container.editable-inline .editableform .control-group .editable-buttons a.editable-cancel, .wizard > .actions a.btn-xs {
     padding: 0.5rem 0.75rem;
     font-size: 0.625rem; }
@@ -17730,8 +17735,8 @@ select.tt-hint {
   padding: .4375rem .75rem; }
 
 .form-group label {
-  font-size: 1.125rem;
-  line-height: 1;
+  font-size: 1.5rem;
+  line-height: 1.5;
   vertical-align: top; }
 
 .form-group.has-danger .form-control, .form-group.has-danger .asColorPicker-input, .form-group.has-danger .dataTables_wrapper select, .dataTables_wrapper .form-group.has-danger select, .form-group.has-danger .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row .form-group.has-danger input[type=text], .form-group.has-danger
@@ -19033,12 +19038,12 @@ dl {
   .table th, .jsgrid .jsgrid-table th,
   .table td, .jsgrid .jsgrid-table td {
     vertical-align: middle;
-    font-size: 0.875rem;
-    line-height: 1; }
+    font-size: 1rem;
+    line-height: 1.125; }
     .table th img, .jsgrid .jsgrid-table th img,
     .table td img, .jsgrid .jsgrid-table td img {
-      width: 30px;
-      height: 30px;
+      width: 100px;
+      height: 100px;
       border-radius: 100%; }
     .table th .badge, .jsgrid .jsgrid-table th .badge,
     .table td .badge, .jsgrid .jsgrid-table td .badge {
@@ -19047,7 +19052,10 @@ dl {
     border: none; }
     .table.table-borderless tr, .jsgrid .table-borderless.jsgrid-table tr, .table.table-borderless td, .jsgrid .table-borderless.jsgrid-table td, .table.table-borderless th, .jsgrid .table-borderless.jsgrid-table th {
       border: none; }
-
+  #deskripsiproduk{
+    font-size: 12px;
+    line-height: 15px;
+  }
 /* Tabs */
 .nav {
   margin-bottom: 1rem; }

@@ -230,90 +230,70 @@
         </nav>
         <!-- partial -->
         <div class="content-wrapper">
-          <div class="row">
-            <div class=" col-lg-4 grid-margin stretch-card">
+          <div class="row grid-margin">
+            <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Jumlah User</h3>
-                  </div>
-                  <h5 class="card-description">Total : <?php echo $users->count(); ?></h5>
-                  <?php foreach ($users as $user) { ?>
-                  <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b><?php echo $user->username; ?> </b>telah terdaftar sebagai pengguna baru</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0"><?php echo $user->email; ?></p>
-                        </div>
-                        <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
-                      </div>
-                    </div>
-                  </div>
-                  <?php } ?>
-                  <br>
+                  <b><h1 class="card-title text-center">List Produk</h1></b>
+                  <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="{{url('/admin/listuser')}}"><button class="btn btn-primary">Selengkapnya</button></a>
+                      <a href="{{url('/admin/tambahproduk')}}"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title">Jumlah Produk</h3>
-                  <h5 class="card-description">Total : <?php echo $produk->count(); ?></h5>
-                  {% for prod in produk %}
-                    <div class="list d-flex align-items-center border-bottom py-3">
-                      <img class="img-sm rounded-circle" src="{{url(prod.foto_produk)}}" alt="">
-                      <div class="wrapper w-100 ml-3">
-                        <p class="mb-0"><b>{{ prod.nama_produk }} </b>telah ditambahkan sebagai produk</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex align-items-center">
-                            <i class="mdi mdi-clock text-muted mr-1"></i>
-                            <p class="mb-0">Harga : {{ prod.harga_produk }}</p>
-                          </div>
-                          <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
-                        </div>
+                    <!-- <form method="POST" autocomplete="off" action="{{url('admin/cariuser')}}"> -->
+                      <div class="btn-group ml-auto mr-2 border-0">
+                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
                       </div>
-                    </div>
-                    {% endfor %}
-                    <br>
-                    <div class="btn-group mr-2">
-                      <a href="{{url('/admin/listproduk')}}"><button class="btn btn-primary">Selengkapnya</button></a>
-                    </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title">Jumlah Admin</h3>
-                  <h5 class="card-description">Total : <?php echo $admin->count(); ?></h5>
-                  <?php foreach ($admin as $user) { ?>
-                    <div class="list d-flex align-items-center border-bottom py-3">
-                      <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                      <div class="wrapper w-100 ml-3">
-                        <p class="mb-0"><b><?php echo $user->nama; ?> </b>telah terdaftar sebagai pengguna baru</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex align-items-center">
-                            <i class="mdi mdi-clock text-muted mr-1"></i>
-                            <p class="mb-0"><?php echo $user->email; ?></p>
-                          </div>
-                          <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
-                        </div>
-                      </div>
-                    </div>
-                    <?php } ?>
-                    
+                    <!-- </form> -->
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table mt-3 border-top">
+                      <thead>
+                        <tr>
+                          <th><b>Produk</b></th>
+                          <th><b>Gambar Produk</b></th>
+                          <th><b>Nama Produk</b></th>
+                          <th><b>Brand</b></th>
+                          <th><b>Deskrips Produk</b></th>
+                          <th><b>Harga</b></th>
+                          <th><b>Status</b></th>
+                          <th><b>Actions</b></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for prod in produk %}
+                        <tr>
+                            <td>{{ prod.id_produk }}</td>
+                            <td><img src="{{url(prod.foto_produk)}}" width="100px"></td>
+                            <td>{{ prod.nama_produk }}</td>
+                            <td>{{ prod.brand_produk }}</td>
+                            <td width="450px" id="deskripsiproduk">{{ prod.deskripsi_produk }}</td>
+                            <td>{{ prod.harga_produk }}</td>
+                            <td class="text-center">{{ prod.status_produk }}</td>
+                            <td><a href="{{ url('produk/edit/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                              <a href="{{ url('produk/hapus/' ~ prod.id_produk) }}" class='btn btn-outline-danger btn-block'>Hapus</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">
+                    <p class="mb-3 mb-sm-0">Showing 1 to 20 of 20 entries</p>
+                    <nav>
+                      <ul class="pagination pagination-info mb-0">
+                        <li class="page-item"><a class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                        <li class="page-item active"><a class="page-link">1</a></li>
+                        <li class="page-item"><a class="page-link">2</a></li>
+                        <li class="page-item"><a class="page-link">3</a></li>
+                        <li class="page-item"><a class="page-link">4</a></li>
+                        <li class="page-item"><a class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>  
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">

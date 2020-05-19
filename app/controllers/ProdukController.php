@@ -6,7 +6,7 @@ namespace App\Controllers;
 use Phalcon\Mvc\Controller;
 
 use App\Models\Produk as Produk;
-
+use App\Models\Users as Users;
 use App\Models\Wishlist as Wishlist;
 
 use App\Validation\ProdukValidation as ProdukValidation;
@@ -132,6 +132,11 @@ class ProdukController extends ControllerBase
 
         // passing a message to the view
         $this->view->message = $message;
+
+        $user = new Users();
+        $this->view->users = Users::find("peran = 'user'");
+        $produk = new Produk();
+        $this->view->produk = Produk::find();
     }
     public function listAction()
     {

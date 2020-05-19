@@ -8,7 +8,7 @@
   <title>Admin</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ static_url('/css/admin.css') }}" type="text/css">
+  <link rel="stylesheet" href="<?= $this->url->getStatic('/css/admin.css') ?>" type="text/css">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 </head>
@@ -26,25 +26,7 @@
         </button>
         <ul class="navbar-nav">
           <li class="nav-item dropdown d-none d-lg-flex">
-            <a class="nav-link dropdown-toggle nav-btn" id="actionDropdown" href="#" data-toggle="dropdown">
-              <span class="btn">+ Create admin</span>
-            </a>
-            <div class="dropdown-menu navbar-dropdown dropdown-left" aria-labelledby="actionDropdown">
-              <a class="dropdown-item" href="#">
-                <i class="icon-user text-primary"></i>
-                User Account
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-user-following text-warning"></i>
-                Admin User
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-docs text-success"></i>
-                Sales report
-              </a>
-            </div>
+            <h3>Halaman Admin</h3>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
@@ -180,45 +162,46 @@
               <div class="nav-link">
                 <div class="profile-image">
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image"/>
-                  <span class="online-status online"></span> <!--change class online to offline or busy as needed-->
+                  <span class="online-status online"></span> 
                 </div>
                 <div class="profile-name">
                   <p class="name">
-                    {{ session.get('auth')['nama'] }}
+                    <?= $this->session->get('auth')['nama'] ?>
                   </p>
                   <p class="designation">
-                    {{ session.get('auth')['peran'] }}
+                    <?= $this->session->get('auth')['peran'] ?>
                   </p>
                 </div>
               </div>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin/editprofile/' ~ session.get('auth')['id_user']) }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin/editprofile/' . $this->session->get('auth')['id_user']) ?>"">
                 <i class="fas fa-edit menu-icon"></i>
                 <span class="menu-title">Edit Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin') }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin') ?>"">
                 <i class="fas fa-columns menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/signup/list')}}">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="{{url('/produk/list')}}">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
               </a>
             </li>
+            
             <!-- <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                 <i class="icon-grid menu-icon"></i>
@@ -234,10 +217,11 @@
                 </ul>
               </div>
             </li> -->
+            
             <br>
             <br>
             <li>
-              <a type="button" class="btn btn-block btn-danger" href="{{url('Session/logout')}}">
+              <a type="button" class="btn btn-block btn-danger" href="<?= $this->url->get('Session/logout') ?>">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
               </a>
@@ -255,9 +239,10 @@
                     <h4 class="card-title mb-0"></h4>
                     
                     <ul class="nav nav-tabs tab-solid tab-solid-primary mb-0" id="myTab" role="tablist">
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                         <a class="nav-link active" id="info-tab" data-toggle="tab" role="tab" aria-controls="info" aria-expanded="true">Edit Profile</a>
-                      </li>
+                      </li> -->
+                      
                       <!-- <li class="nav-item">
                         <a class="nav-link" id="avatar-tab" data-toggle="tab" href="#avatar" role="tab" aria-controls="avatar">Avatar</a>
                       </li>
@@ -267,39 +252,72 @@
                     </ul>
                   </div>
                   <div class="wrapper">
-                    <img src="../../images/faces/face6.jpg" alt="">
-                      <h3 class="name text-center">{{ session.get('auth')['nama'] }}</h3>
-                      <a class="d-block text-center text-dark">{{ session.get('auth')['peran'] }}</a>
-                      <a class="d-block text-center text-dark" >{{ session.get('auth')['no_hp'] }}</a>
-                    <hr>
+                    <h1 class="text-center">Tambah Produk</h1>
+                    <br>
+                    <!-- <img src="../../images/faces/face6.jpg" alt="">
+                      <h3 class="name text-center"><?= $this->session->get('auth')['nama'] ?></h3>
+                      <a class="d-block text-center text-dark"><?= $this->session->get('auth')['peran'] ?></a>
+                      <a class="d-block text-center text-dark" ><?= $this->session->get('auth')['no_hp'] ?></a>
+                    <hr> -->
                     
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
-                        <form method="POST" action="{{ url('signup/update/' ~ session.get('auth')['id_user']) }}" autocomplete="off">
+                        <form method="POST" autocomplete="off" action="<?= $this->url->get('produk/tambah') ?>" enctype="multipart/form-data">
                           <div class="form-group">
-                            <label for="nama" font-size="30px">Nama Lengkap</label>
-                            <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama Lengkap" value="{{user.nama}}">
+                            <label for="nama_produk" font-size="30px">Nama Produk</label>
+                            <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" required
+                            autofocus>
                           </div>
                           <div class="form-group">
-                            <label for="username">Username</label>
-                            <input class="form-control" type="text" id="username" name="username" placeholder="Username" value="{{user.username}}">
+                            <label for="brand_produk">Brand</label>
+                            <input class="form-control" type="text" id="brand_produk" name="brand_produk" placeholder="Brand Produk" required
+                            autofocus>
                           </div>
                           <div class="form-group">
-                            <label for="no_hp">Nomor Handphone</label>
-                            <input class="form-control" name="no_hp" id="no_hp" placeholder="Nomor Handphone" type="text" value="{{user.no_hp}}"></input>
+                            <label for="deskripsi_produk">Deskripsi Produk</label>
+                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" required
+                            autofocus></textarea>
                           </div>
                           <div class="form-group">
-                            <label for="email">Email</label>
-                            <input class="form-control" type="text" id="email" name="email" placeholder="Email" value="{{user.email}}">
+                            <label for="harga_produk">Harga Produk</label>
+                            <input class="form-control" type="text" id="harga_produk" name="harga_produk" placeholder="Harga Produk" required
+                            autofocus>
                           </div>
                           <div class="form-group">
-                            <label>Alamat</label>
-                            <input class="form-control" id="alamat" name="alamat" placeholder="Alamat Lengkap" type="text" value="{{user.alamat}}"></input>
+                            <label for="kategori">Kategori</label>
+                            <input class="form-control" type="text" id="kategori" name="kategori" placeholder="Kategori" required
+                            autofocus>
+                            <p>(Pilihan : Man, Woman, Kids</p>
+                            <!-- <select class="form-control form-control-lg" id="kategori_produk" name="kategori_produk" required
+                            autofocus>
+                              <option>Man</option>
+                              <option>Woman</option>
+                              <option>Kids</option>
+                            </select> -->
                           </div>
+                          <div class="form-group">
+                            <label for="status_produk">Status Produk </label>
+                            <input class="form-control" type="text" id="status_produk" name="status_produk" placeholder="Status Produk" required
+                            autofocus>
+                            <p>(0:Kosong, 1:Tersedia)</p>
+                          </div>
+                          <!-- TAMBAH FOTO PRODUK -->
                           
+                            <div class="form-group">
+                              <label for="harga_produk">Foto Produk</label>
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk">
+                                <label class="custom-file-label" for="foto_produk">Pilih File</label>
+                              </div>
+                            </div>
+                            
+                            <div class="wrapper mb-3 mt-0">
+                              <span class="badge badge-warning text-white">Note : </span>
+                              <p class="d-inline ml-3 text-muted">Image size is limited to not greater than 1MB .</p>
+                            </div>
                           <div class="form-group mt-5">
-                            <button  class="btn btn-primary" type="submit">Update</button>
-                            <button class="btn btn-outline-danger">Cancel</button>
+                            <button  class="btn btn-lg btn-primary" type="submit">Tambah Produk</button>
+                            <button class="btn btn-lg btn-outline-danger">Batal</button>
                           </div>
                         </form>
                       </div><!-- tab content ends -->

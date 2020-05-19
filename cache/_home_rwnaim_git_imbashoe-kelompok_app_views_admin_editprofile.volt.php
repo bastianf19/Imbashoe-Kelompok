@@ -26,25 +26,7 @@
         </button>
         <ul class="navbar-nav">
           <li class="nav-item dropdown d-none d-lg-flex">
-            <a class="nav-link dropdown-toggle nav-btn" id="actionDropdown" href="#" data-toggle="dropdown">
-              <span class="btn">+ Create admin</span>
-            </a>
-            <div class="dropdown-menu navbar-dropdown dropdown-left" aria-labelledby="actionDropdown">
-              <a class="dropdown-item" href="#">
-                <i class="icon-user text-primary"></i>
-                User Account
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-user-following text-warning"></i>
-                Admin User
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-docs text-success"></i>
-                Sales report
-              </a>
-            </div>
+            <h3>Halaman Admin</h3>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">

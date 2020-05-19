@@ -8,7 +8,7 @@
   <title>Admin</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ static_url('/css/admin.css') }}" type="text/css">
+  <link rel="stylesheet" href="<?= $this->url->getStatic('/css/admin.css') ?>" type="text/css">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 </head>
@@ -166,36 +166,36 @@
                 </div>
                 <div class="profile-name">
                   <p class="name">
-                    {{ session.get('auth')['nama'] }}
+                    <?= $this->session->get('auth')['nama'] ?>
                   </p>
                   <p class="designation">
-                    {{ session.get('auth')['peran'] }}
+                    <?= $this->session->get('auth')['peran'] ?>
                   </p>
                 </div>
               </div>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin/editprofile/' ~ session.get('auth')['id_user']) }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin/editprofile/' . $this->session->get('auth')['id_user']) ?>"">
                 <i class="fas fa-edit menu-icon"></i>
                 <span class="menu-title">Edit Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin') }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin') ?>"">
                 <i class="fas fa-columns menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/admin/listuser')}}">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="{{url('/admin/listproduk')}}">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
@@ -221,7 +221,7 @@
             <br>
             <br>
             <li>
-              <a type="button" class="btn btn-block btn-danger" href="{{url('Session/logout')}}">
+              <a type="button" class="btn btn-block btn-danger" href="<?= $this->url->get('Session/logout') ?>">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
               </a>
@@ -230,90 +230,70 @@
         </nav>
         <!-- partial -->
         <div class="content-wrapper">
-          <div class="row">
-            <div class=" col-lg-4 grid-margin stretch-card">
+          <div class="row grid-margin">
+            <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Jumlah User</h3>
-                  </div>
-                  <h5 class="card-description">Total : <?php echo $users->count(); ?></h5>
-                  <?php foreach ($users as $user) { ?>
-                  <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b><?php echo $user->username; ?> </b>telah terdaftar sebagai pengguna baru</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0"><?php echo $user->email; ?></p>
-                        </div>
-                        <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
-                      </div>
-                    </div>
-                  </div>
-                  <?php } ?>
-                  <br>
+                  <b><h1 class="card-title text-center">List Produk</h1></b>
+                  <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="{{url('/admin/listuser')}}"><button class="btn btn-primary">Selengkapnya</button></a>
+                      <a href="<?= $this->url->get('/admin/tambahproduk') ?>"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title">Jumlah Produk</h3>
-                  <h5 class="card-description">Total : <?php echo $produk->count(); ?></h5>
-                  {% for prod in produk %}
-                    <div class="list d-flex align-items-center border-bottom py-3">
-                      <img class="img-sm rounded-circle" src="{{url(prod.foto_produk)}}" alt="">
-                      <div class="wrapper w-100 ml-3">
-                        <p class="mb-0"><b>{{ prod.nama_produk }} </b>telah ditambahkan sebagai produk</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex align-items-center">
-                            <i class="mdi mdi-clock text-muted mr-1"></i>
-                            <p class="mb-0">Harga : {{ prod.harga_produk }}</p>
-                          </div>
-                          <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
-                        </div>
+                    <!-- <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>"> -->
+                      <div class="btn-group ml-auto mr-2 border-0">
+                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
                       </div>
-                    </div>
-                    {% endfor %}
-                    <br>
-                    <div class="btn-group mr-2">
-                      <a href="{{url('/admin/listproduk')}}"><button class="btn btn-primary">Selengkapnya</button></a>
-                    </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title">Jumlah Admin</h3>
-                  <h5 class="card-description">Total : <?php echo $admin->count(); ?></h5>
-                  <?php foreach ($admin as $user) { ?>
-                    <div class="list d-flex align-items-center border-bottom py-3">
-                      <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                      <div class="wrapper w-100 ml-3">
-                        <p class="mb-0"><b><?php echo $user->nama; ?> </b>telah terdaftar sebagai pengguna baru</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex align-items-center">
-                            <i class="mdi mdi-clock text-muted mr-1"></i>
-                            <p class="mb-0"><?php echo $user->email; ?></p>
-                          </div>
-                          <!-- <small class="text-muted ml-auto">2 hours ago</small> -->
-                        </div>
-                      </div>
-                    </div>
-                    <?php } ?>
-                    
+                    <!-- </form> -->
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table mt-3 border-top">
+                      <thead>
+                        <tr>
+                          <th><b>Produk</b></th>
+                          <th><b>Gambar Produk</b></th>
+                          <th><b>Nama Produk</b></th>
+                          <th><b>Brand</b></th>
+                          <th><b>Deskrips Produk</b></th>
+                          <th><b>Harga</b></th>
+                          <th><b>Status</b></th>
+                          <th><b>Actions</b></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($produk as $prod) { ?>
+                        <tr>
+                            <td><?= $prod->id_produk ?></td>
+                            <td><img src="<?= $this->url->get($prod->foto_produk) ?>" width="100px"></td>
+                            <td><?= $prod->nama_produk ?></td>
+                            <td><?= $prod->brand_produk ?></td>
+                            <td width="450px" id="deskripsiproduk"><?= $prod->deskripsi_produk ?></td>
+                            <td><?= $prod->harga_produk ?></td>
+                            <td class="text-center"><?= $prod->status_produk ?></td>
+                            <td><a href="<?= $this->url->get('produk/edit/' . $prod->id_produk) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                              <a href="<?= $this->url->get('produk/hapus/' . $prod->id_produk) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                    </table>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">
+                    <p class="mb-3 mb-sm-0">Showing 1 to 20 of 20 entries</p>
+                    <nav>
+                      <ul class="pagination pagination-info mb-0">
+                        <li class="page-item"><a class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+                        <li class="page-item active"><a class="page-link">1</a></li>
+                        <li class="page-item"><a class="page-link">2</a></li>
+                        <li class="page-item"><a class="page-link">3</a></li>
+                        <li class="page-item"><a class="page-link">4</a></li>
+                        <li class="page-item"><a class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>  
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -364,9 +344,9 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h3 class="card-title text-center"><a href=""><img src="/img/Logoimba.png"
-                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | {{ session.get('auth')['nama'] }} <?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
-                            <a href="{{url('/signup/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
-                            <a href="{{url('/produk/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
+                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | <?= $this->session->get('auth')['nama'] ?> <?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
+                            <a href="<?= $this->url->get('/signup/list') ?>" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
+                            <a href="<?= $this->url->get('/produk/list') ?>" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
                     </div>
                 </div>
             </div>
