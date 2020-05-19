@@ -240,7 +240,7 @@
                   <h5 class="card-description">Total : <?php echo $users->count(); ?></h5>
                   <?php foreach ($users as $user) { ?>
                   <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
+                    <img class="img-sm rounded-circle" src="/img/admin/avatar.png" alt="">
                     <div class="wrapper w-100 ml-3">
                       <p class="mb-0"><b><?php echo $user->username; ?> </b>telah terdaftar sebagai pengguna baru</p>
                       <div class="d-flex justify-content-between align-items-center">
@@ -295,7 +295,7 @@
                   <h5 class="card-description">Total : <?php echo $admin->count(); ?></h5>
                   <?php foreach ($admin as $user) { ?>
                     <div class="list d-flex align-items-center border-bottom py-3">
-                      <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
+                      <img class="img-sm rounded-circle" src="/img/admin/admin.png" alt="">
                       <div class="wrapper w-100 ml-3">
                         <p class="mb-0"><b><?php echo $user->nama; ?> </b>telah terdaftar sebagai pengguna baru</p>
                         <div class="d-flex justify-content-between align-items-center">
