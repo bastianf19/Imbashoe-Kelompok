@@ -269,7 +269,7 @@
                             <td width="450px" id="deskripsiproduk">{{ prod.deskripsi_produk }}</td>
                             <td>{{ prod.harga_produk }}</td>
                             <td class="text-center">{{ prod.status_produk }}</td>
-                            <td><a href="{{ url('produk/edit/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                            <td><a href="{{ url('admin/editproduk/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
                               <a href="{{ url('produk/hapus/' ~ prod.id_produk) }}" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
                         {% endfor %}

@@ -56,8 +56,8 @@ class ProdukController extends ControllerBase
         {
             $this->flashSession->error('Wishlist berhasil dihapus.');
         }
-        echo 'Wishlist berhasil dihapus.<br>';
-        echo $this->tag->linkTo(['/', 'Home', 'class' => 'btn btn-primary']);
+        echo 'Wishlist berhasil dihapus.<br> <br>';
+        echo $this->tag->linkTo(['/admin/listproduk', 'List Produk', 'class' => 'btn btn-lg btn-outline-primary']);
     }
 
     public function detailAction($id_produk)
@@ -162,7 +162,7 @@ class ProdukController extends ControllerBase
             echo "Produk berhasil dihapus. <br>";
         }
         // echo 'Produk berhasil dihapus.<br>';
-        echo $this->tag->linkTo(['/produk/list', 'List Produk', 'class' => 'btn btn-primary']);
+        echo $this->tag->linkTo(['/admin/listproduk', 'List Produk', 'class' => 'btn btn-lg btn-outline-primary']);
     }
     public function updateAction($id_produk)
     {

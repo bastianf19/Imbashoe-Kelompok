@@ -230,77 +230,139 @@
         </nav>
         <!-- partial -->
         <div class="content-wrapper">
-          <div class="row grid-margin">
-            <div class="col-12">
+          <div class="row user-profile">
+            
+            <div class="col-lg-12 side-right stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <b><h1 class="card-title text-center">List Produk</h1></b>
-                  <div class="d-flex table-responsive">
-                    <div class="btn-group mr-2">
-                      <a href="<?= $this->url->get('/admin/tambahproduk') ?>"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                  <div class="wrapper d-block d-sm-flex align-items-center justify-content-between">
+                    <h4 class="card-title mb-0"></h4>
+                    
+                    <ul class="nav nav-tabs tab-solid tab-solid-primary mb-0" id="myTab" role="tablist">
+                      <!-- <li class="nav-item">
+                        <a class="nav-link active" id="info-tab" data-toggle="tab" role="tab" aria-controls="info" aria-expanded="true">Edit Profile</a>
+                      </li> -->
+                      
+                      <!-- <li class="nav-item">
+                        <a class="nav-link" id="avatar-tab" data-toggle="tab" href="#avatar" role="tab" aria-controls="avatar">Avatar</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-controls="security">Security</a>
+                      </li> -->
+                    </ul>
+                  </div>
+                  <div class="wrapper">
+                    <h1 class="text-center">Tambah Produk</h1>
+                    <br>
+                    <!-- <img src="../../images/faces/face6.jpg" alt="">
+                      <h3 class="name text-center"><?= $this->session->get('auth')['nama'] ?></h3>
+                      <a class="d-block text-center text-dark"><?= $this->session->get('auth')['peran'] ?></a>
+                      <a class="d-block text-center text-dark" ><?= $this->session->get('auth')['no_hp'] ?></a>
+                    <hr> -->
+                    
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
+                        <form method="POST" autocomplete="off" action="<?= $this->url->get('produk/update/' . $produk->id_produk) ?>" enctype="multipart/form-data">
+                          <div class="form-group">
+                            <label for="nama_produk" font-size="30px">Nama Produk</label>
+                            <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="<?= $produk->nama_produk ?>" >
+                          </div>
+                          <div class="form-group">
+                            <label for="brand_produk">Brand</label>
+                            <input class="form-control" type="text" id="brand_produk" name="brand_produk" placeholder="Brand Produk" value="<?= $produk->brand_produk ?>">
+                          </div>
+                          <div class="form-group">
+                            <label for="deskripsi_produk">Deskripsi Produk</label>
+                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" required
+                            autofocus></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="harga_produk">Harga Produk</label>
+                            <input class="form-control" type="text" id="harga_produk" name="harga_produk" placeholder="Harga Produk" required
+                            autofocus>
+                          </div>
+                          <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <input class="form-control" type="text" id="kategori" name="kategori" placeholder="Kategori" required
+                            autofocus>
+                            <p>(Pilihan : Man, Woman, Kids</p>
+                            <!-- <select class="form-control form-control-lg" id="kategori_produk" name="kategori_produk" required
+                            autofocus>
+                              <option>Man</option>
+                              <option>Woman</option>
+                              <option>Kids</option>
+                            </select> -->
+                          </div>
+                          <div class="form-group">
+                            <label for="status_produk">Status Produk </label>
+                            <input class="form-control" type="text" id="status_produk" name="status_produk" placeholder="Status Produk" required
+                            autofocus>
+                            <p>(0:Kosong, 1:Tersedia)</p>
+                          </div>
+                          <!-- TAMBAH FOTO PRODUK -->
+                          
+                            <div class="form-group">
+                              <label for="harga_produk">Foto Produk</label>
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk">
+                                <label class="custom-file-label" for="foto_produk">Pilih File</label>
+                              </div>
+                            </div>
+                            
+                            <div class="wrapper mb-3 mt-0">
+                              <span class="badge badge-warning text-white">Note : </span>
+                              <p class="d-inline ml-3 text-muted">Image size is limited to not greater than 1MB .</p>
+                            </div>
+                          <div class="form-group mt-5">
+                            <button  class="btn btn-lg btn-primary" type="submit">Tambah Produk</button>
+                            <button class="btn btn-lg btn-outline-danger">Batal</button>
+                          </div>
+                        </form>
+                      </div><!-- tab content ends -->
+                      <!-- TAMBAH GAMBAR -->
+                      <!-- <div class="tab-pane fade" id="avatar" role="tabpanel" aria-labelledby="avatar-tab">
+                        <div class="wrapper mb-5 mt-4">
+                          <span class="badge badge-warning text-white">Note : </span>
+                          <p class="d-inline ml-3 text-muted">Image size is limited to not greater than 1MB .</p>
+                        </div>
+                        <form action="#">
+                          <input type="file" class="dropify" data-max-file-size="1mb" data-default-file="../../images/faces/face6.jpg"/>
+                          <div class="form-group mt-5">
+                            <button type="submit" class="btn btn-success mr-2">Update</button>
+                            <button class="btn btn-outline-danger">Cancel</button>
+                          </div>
+                        </form>
+                      </div> -->
+                      <!-- GANTI PASSWORD -->
+                      <!-- <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                        <form action="#">
+                          <div class="form-group">
+                            <label for="change-password">Change password</label>
+                            <input type="password" class="form-control" id="change-password" placeholder="Enter you current password">
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control" id="new-password" placeholder="Enter you new password">
+                          </div>
+                          <div class="form-group mt-5">
+                            <button type="submit" class="btn btn-success mr-2">Update</button>
+                            <button class="btn btn-outline-danger">Cancel</button>
+                          </div>
+                        </form>
+                      </div> -->
                     </div>
-                    <!-- <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>"> -->
-                      <div class="btn-group ml-auto mr-2 border-0">
-                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
-                      </div>
-                    <!-- </form> -->
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table mt-3 border-top">
-                      <thead>
-                        <tr>
-                          <th><b>Produk</b></th>
-                          <th><b>Gambar Produk</b></th>
-                          <th><b>Nama Produk</b></th>
-                          <th><b>Brand</b></th>
-                          <th><b>Deskrips Produk</b></th>
-                          <th><b>Harga</b></th>
-                          <th><b>Status</b></th>
-                          <th><b>Actions</b></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php foreach ($produk as $prod) { ?>
-                        <tr>
-                            <td><?= $prod->id_produk ?></td>
-                            <td><img src="<?= $this->url->get($prod->foto_produk) ?>" width="100px"></td>
-                            <td><?= $prod->nama_produk ?></td>
-                            <td><?= $prod->brand_produk ?></td>
-                            <td width="450px" id="deskripsiproduk"><?= $prod->deskripsi_produk ?></td>
-                            <td><?= $prod->harga_produk ?></td>
-                            <td class="text-center"><?= $prod->status_produk ?></td>
-                            <td><a href="<?= $this->url->get('admin/editproduk/' . $prod->id_produk) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
-                              <a href="<?= $this->url->get('produk/hapus/' . $prod->id_produk) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                    </table>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">
-                    <p class="mb-3 mb-sm-0">Showing 1 to 20 of 20 entries</p>
-                    <nav>
-                      <ul class="pagination pagination-info mb-0">
-                        <li class="page-item"><a class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link">1</a></li>
-                        <li class="page-item"><a class="page-link">2</a></li>
-                        <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item"><a class="page-link">4</a></li>
-                        <li class="page-item"><a class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
-                      </ul>
-                    </nav>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>  
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-          <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020 <a href="#">Imbashoe.com</a>. All rights reserved.</span>
-          </div>
-        </footer>
+            <div class="container-fluid clearfix">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020 <a href="#">Imbashoe.com</a>. All rights reserved.</span>
+            </div>
+          </footer>
         <!-- partial -->
       </div>
       <!-- row-offcanvas ends -->
@@ -335,24 +397,3 @@
 </body>
 
 </html>
-
-<!-- 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin my-5">
-                    <div class="card-body">
-                        <h3 class="card-title text-center"><a href=""><img src="/img/Logoimba.png"
-                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | <?= $this->session->get('auth')['nama'] ?> <?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
-                            <a href="<?= $this->url->get('/signup/list') ?>" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
-                            <a href="<?= $this->url->get('/produk/list') ?>" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</body>
-
-</html> -->

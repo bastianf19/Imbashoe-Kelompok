@@ -35,11 +35,11 @@ class AdminController extends ControllerBase
         
         // echo $this->tag->linkTo(["'/home/index'", 'List User', 'class' => 'btn btn-primary']);
     }
-    public function editprodukAction($id_user)
+    public function editprodukAction($id_produk)
     {
         $editProduk = Produk::findFirstByid_produk($id_produk);
         $this->view->produk = $editProduk;
-        echo $this->tag->linkTo(['/produk/list', 'List Produk', 'class' => 'btn btn-primary']);
+        echo $this->tag->linkTo(['/admin/listproduk', 'List Produk', 'class' => 'btn btn-lg btn-outline-primary']);
 
         $produk = new Produk();
         $this->view->produk = Produk::find();
@@ -47,6 +47,53 @@ class AdminController extends ControllerBase
         $this->view->users = Users::find("peran = 'user'");
         
         // echo $this->tag->linkTo(["'/home/index'", 'List User', 'class' => 'btn btn-primary']);
+    }
+    
+
+    public function updateprodukAction($id_produk)
+    {
+        $valid = new ProdukValidation();
+        $message = $valid->validate($_POST);
+        if(!count($message))
+        {
+            $prod = Produk::findFirstByid_produk($id_produk);
+            $prod->assign(
+                $this->request->getPost(),
+                [
+                    'nama_produk',
+                    'brand_produk',
+                    'deskripsi_produk',
+                    'harga_produk',
+                    'status_produk',
+                ]
+            );
+            if($this->request->hasFiles())
+            {
+                $img = $this->request->getUploadedFiles()[0];
+                $path = 'img/'.$img->getName();
+                unlink($prod->foto_produk);
+                $prod->foto_produk = $path;
+                $img->moveTo($path);
+            }
+            // Store and check for errors
+            $success = $prod->save();
+            $this->view->success = $success;
+
+            if ($success) {
+                echo "Produk berhasil diupdate. <br>";
+            }
+            echo $this->tag->linkTo(['/produk/list', 'List Produk', 'class' => 'btn btn-primary']);
+
+        }
+        else
+        {
+            foreach ($message as $msg) 
+            {
+                $this->flashSession->error($msg->getMessage());
+            }
+            echo $this->tag->linkTo(['/admin', 'Admin Home', 'class' => 'btn btn-primary']);
+
+        }
     }
 
     public function cariprodukAction()
