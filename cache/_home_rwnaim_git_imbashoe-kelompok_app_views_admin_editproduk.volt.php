@@ -273,7 +273,7 @@
                           </div>
                           <div class="form-group">
                             <label for="deskripsi_produk">Deskripsi Produk</label>
-                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" value="<?= $prod->deskripsi_produk ?>"></textarea>
+                            <input class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" value="<?= $prod->deskripsi_produk ?>">
                           </div>
                           <div class="form-group">
                             <label for="harga_produk">Harga Produk</label>

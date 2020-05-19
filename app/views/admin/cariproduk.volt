@@ -259,7 +259,7 @@
                           <th class="text-center"><b>Gambar Produk</b></th>
                           <th class="text-center"><b>Nama Produk</b></th>
                           <th class="text-center"><b>Brand</b></th>
-                          <th class="text-center"><b>Deskrips Produk</b></th>
+                          <th class="text-center"><b>Deskripsi Produk</b></th>
                           <th><b>Harga</b></th>
                           <th class="text-center"><b>Status</b></th>
                           <th class="text-center"><b>Actions</b></th>
