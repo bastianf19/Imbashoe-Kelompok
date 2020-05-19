@@ -249,20 +249,20 @@
                     <table class="table mt-3 border-top">
                       <thead>
                         <tr>
-                          <th><b>Produk</b></th>
-                          <th><b>Gambar Produk</b></th>
-                          <th><b>Nama Produk</b></th>
-                          <th><b>Brand</b></th>
-                          <th><b>Deskrips Produk</b></th>
-                          <th><b>Harga</b></th>
-                          <th><b>Status</b></th>
-                          <th><b>Actions</b></th>
+                          <th class="text-center"><b>ID Produk</b></th>
+                          <th  class="text-center"><b>Gambar Produk</b></th>
+                          <th  class="text-center"><b>Nama Produk</b></th>
+                          <th  class="text-center"><b>Brand</b></th>
+                          <th  class="text-center"><b>Deskrips Produk</b></th>
+                          <th  ><b>Harga</b></th>
+                          <th  class="text-center"><b>Status</b></th>
+                          <th  class="text-center"><b>Actions</b></th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php foreach ($produk as $prod) { ?>
                         <tr>
-                            <td><?= $prod->id_produk ?></td>
+                            <td  class="text-center"><?= $prod->id_produk ?></td>
                             <td><img src="<?= $this->url->get($prod->foto_produk) ?>" width="100px"></td>
                             <td><?= $prod->nama_produk ?></td>
                             <td><?= $prod->brand_produk ?></td>
