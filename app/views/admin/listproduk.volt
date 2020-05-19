@@ -237,13 +237,13 @@
                   <b><h1 class="card-title text-center">List Produk</h1></b>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="{{url('/admin/tambah')}}"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                      <a href="{{url('/admin/tambah')}}"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
-                    <!-- <form method="POST" autocomplete="off" action="{{url('admin/cariuser')}}"> -->
-                      <div class="btn-group ml-auto mr-2 border-0">
-                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
+                    <form class="input-group md-form" method="POST" autocomplete="off" action="{{url('admin/cariproduk')}}">
+                      <div class="input-group md-form">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                       </div>
-                    <!-- </form> -->
+                    </form>
                   </div>
                   <div class="table-responsive">
                     <table class="table mt-3 border-top">

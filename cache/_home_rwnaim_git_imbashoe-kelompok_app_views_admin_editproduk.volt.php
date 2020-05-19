@@ -262,29 +262,26 @@
                     
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
-                        <form method="POST" autocomplete="off" action="<?= $this->url->get('produk/update/' . $produk->id_produk) ?>" enctype="multipart/form-data">
+                        <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/updateproduk/' . $prod->id_produk) ?>" enctype="multipart/form-data">
                           <div class="form-group">
                             <label for="nama_produk" font-size="30px">Nama Produk</label>
-                            <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="<?= $produk->nama_produk ?>" >
+                            <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="<?= $prod->nama_produk ?>" >
                           </div>
                           <div class="form-group">
                             <label for="brand_produk">Brand</label>
-                            <input class="form-control" type="text" id="brand_produk" name="brand_produk" placeholder="Brand Produk" value="<?= $produk->brand_produk ?>">
+                            <input class="form-control" type="text" id="brand_produk" name="brand_produk" placeholder="Brand Produk" value="<?= $prod->brand_produk ?>">
                           </div>
                           <div class="form-group">
                             <label for="deskripsi_produk">Deskripsi Produk</label>
-                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" required
-                            autofocus></textarea>
+                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" value="<?= $prod->deskripsi_produk ?>"></textarea>
                           </div>
                           <div class="form-group">
                             <label for="harga_produk">Harga Produk</label>
-                            <input class="form-control" type="text" id="harga_produk" name="harga_produk" placeholder="Harga Produk" required
-                            autofocus>
+                            <input class="form-control" type="text" id="harga_produk" name="harga_produk" placeholder="Harga Produk" value="<?= $prod->harga_produk ?>">
                           </div>
                           <div class="form-group">
                             <label for="kategori">Kategori</label>
-                            <input class="form-control" type="text" id="kategori" name="kategori" placeholder="Kategori" required
-                            autofocus>
+                            <input class="form-control" type="text" id="kategori" name="kategori" placeholder="Kategori" value="<?= $prod->kategori ?>">
                             <p>(Pilihan : Man, Woman, Kids</p>
                             <!-- <select class="form-control form-control-lg" id="kategori_produk" name="kategori_produk" required
                             autofocus>
@@ -295,8 +292,7 @@
                           </div>
                           <div class="form-group">
                             <label for="status_produk">Status Produk </label>
-                            <input class="form-control" type="text" id="status_produk" name="status_produk" placeholder="Status Produk" required
-                            autofocus>
+                            <input class="form-control" type="text" id="status_produk" name="status_produk" placeholder="Status Produk" value="<?= $prod->status_produk ?>">
                             <p>(0:Kosong, 1:Tersedia)</p>
                           </div>
                           <!-- TAMBAH FOTO PRODUK -->
@@ -304,7 +300,7 @@
                             <div class="form-group">
                               <label for="harga_produk">Foto Produk</label>
                               <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk">
+                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk" value="<?= $prod->foto_produk ?>">
                                 <label class="custom-file-label" for="foto_produk">Pilih File</label>
                               </div>
                             </div>
@@ -314,7 +310,7 @@
                               <p class="d-inline ml-3 text-muted">Image size is limited to not greater than 1MB .</p>
                             </div>
                           <div class="form-group mt-5">
-                            <button  class="btn btn-lg btn-primary" type="submit">Tambah Produk</button>
+                            <button  class="btn btn-lg btn-primary" type="submit">Simpan Perubahan</button>
                             <button class="btn btn-lg btn-outline-danger">Batal</button>
                           </div>
                         </form>

@@ -8,7 +8,7 @@
   <title>Admin</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ static_url('/css/admin.css') }}" type="text/css">
+  <link rel="stylesheet" href="<?= $this->url->getStatic('/css/admin.css') ?>" type="text/css">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 </head>
@@ -166,36 +166,36 @@
                 </div>
                 <div class="profile-name">
                   <p class="name">
-                    {{ session.get('auth')['nama'] }}
+                    <?= $this->session->get('auth')['nama'] ?>
                   </p>
                   <p class="designation">
-                    {{ session.get('auth')['peran'] }}
+                    <?= $this->session->get('auth')['peran'] ?>
                   </p>
                 </div>
               </div>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin/editprofile/' ~ session.get('auth')['id_user']) }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin/editprofile/' . $this->session->get('auth')['id_user']) ?>"">
                 <i class="fas fa-edit menu-icon"></i>
                 <span class="menu-title">Edit Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin') }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin') ?>"">
                 <i class="fas fa-columns menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/admin/listuser')}}">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="{{url('/admin/listproduk')}}">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
@@ -221,7 +221,7 @@
             <br>
             <br>
             <li>
-              <a type="button" class="btn btn-block btn-danger" href="{{url('Session/logout')}}">
+              <a type="button" class="btn btn-block btn-danger" href="<?= $this->url->get('Session/logout') ?>">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
               </a>
@@ -238,9 +238,9 @@
                   <h5 class="card-title text-center">Cari User | '<?php echo $nama_prod; ?>'</h5>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="{{url('/admin/tambah')}}"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                      <a href="<?= $this->url->get('/admin/tambah') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
-                    <form class="input-group md-form" method="POST" autocomplete="off" action="{{url('admin/cariproduk')}}">
+                    <form class="input-group md-form" method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariproduk') ?>">
                       <div class="input-group md-form">
                         <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                       </div>
@@ -261,19 +261,19 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {% for prod in cari %}
+                        <?php foreach ($cari as $prod) { ?>
                         <tr>
-                          <td  class="text-center">{{ prod.id_produk }}</td>
-                          <td><img src="{{url(prod.foto_produk)}}" width="100px"></td>
-                          <td>{{ prod.nama_produk }}</td>
-                          <td>{{ prod.brand_produk }}</td>
-                          <td width="450px" id="deskripsiproduk">{{ prod.deskripsi_produk }}</td>
-                          <td>{{ prod.harga_produk }}</td>
-                          <td class="text-center">{{ prod.status_produk }}</td>
-                          <td><a href="{{ url('admin/editproduk/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
-                            <a href="{{ url('admin/hapusproduk/' ~ prod.id_produk) }}" class='btn btn-outline-danger btn-block'>Hapus</a></td>
+                          <td  class="text-center"><?= $prod->id_produk ?></td>
+                          <td><img src="<?= $this->url->get($prod->foto_produk) ?>" width="100px"></td>
+                          <td><?= $prod->nama_produk ?></td>
+                          <td><?= $prod->brand_produk ?></td>
+                          <td width="450px" id="deskripsiproduk"><?= $prod->deskripsi_produk ?></td>
+                          <td><?= $prod->harga_produk ?></td>
+                          <td class="text-center"><?= $prod->status_produk ?></td>
+                          <td><a href="<?= $this->url->get('admin/editproduk/' . $prod->id_produk) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                            <a href="<?= $this->url->get('admin/hapusproduk/' . $prod->id_produk) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
-                        {% endfor %}
+                        <?php } ?>
                     </tbody>
                     </table>
                   </div>
@@ -673,9 +673,9 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h3 class="card-title text-center"><a href=""><img src="/img/Logoimba.png"
-                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | {{ session.get('auth')['nama'] }} <?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
-                            <a href="{{url('/signup/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
-                            <a href="{{url('/produk/list')}}" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
+                                    style="max-height: 300px; max-width: 300px;"></a><br>Menu | <?= $this->session->get('auth')['nama'] ?> <?php echo $this->tag->linkTo(["Session/logout", "Logout", 'class' => 'btn btn-primary']); ?></h3>
+                            <a href="<?= $this->url->get('/signup/list') ?>" class="btn btn-lg btn-outline-primary btn-block" role="button">All Users</a>
+                            <a href="<?= $this->url->get('/produk/list') ?>" class="btn btn-lg btn-outline-primary btn-block" role="button">List Produk</a>
                     </div>
                 </div>
             </div>

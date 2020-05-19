@@ -237,13 +237,13 @@
                   <b><h1 class="card-title text-center">List Produk</h1></b>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="<?= $this->url->get('/admin/tambahproduk') ?>"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                      <a href="<?= $this->url->get('/admin/tambah') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
-                    <!-- <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>"> -->
-                      <div class="btn-group ml-auto mr-2 border-0">
-                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
+                    <form class="input-group md-form" method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariproduk') ?>">
+                      <div class="input-group md-form">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                       </div>
-                    <!-- </form> -->
+                    </form>
                   </div>
                   <div class="table-responsive">
                     <table class="table mt-3 border-top">
@@ -270,7 +270,7 @@
                             <td><?= $prod->harga_produk ?></td>
                             <td class="text-center"><?= $prod->status_produk ?></td>
                             <td><a href="<?= $this->url->get('admin/editproduk/' . $prod->id_produk) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
-                              <a href="<?= $this->url->get('produk/hapus/' . $prod->id_produk) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
+                              <a href="<?= $this->url->get('admin/hapusproduk/' . $prod->id_produk) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

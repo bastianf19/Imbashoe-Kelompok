@@ -8,7 +8,7 @@
   <title>Admin</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ static_url('/css/admin.css') }}" type="text/css">
+  <link rel="stylesheet" href="<?= $this->url->getStatic('/css/admin.css') ?>" type="text/css">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 </head>
@@ -166,36 +166,36 @@
                 </div>
                 <div class="profile-name">
                   <p class="name">
-                    {{ session.get('auth')['nama'] }}
+                    <?= $this->session->get('auth')['nama'] ?>
                   </p>
                   <p class="designation">
-                    {{ session.get('auth')['peran'] }}
+                    <?= $this->session->get('auth')['peran'] ?>
                   </p>
                 </div>
               </div>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin/editprofile/' ~ session.get('auth')['id_user']) }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin/editprofile/' . $this->session->get('auth')['id_user']) ?>"">
                 <i class="fas fa-edit menu-icon"></i>
                 <span class="menu-title">Edit Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/admin') }}"">
+              <a class="nav-link" href="<?= $this->url->get('/admin') ?>"">
                 <i class="fas fa-columns menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/admin/listuser')}}">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="{{url('/admin/listproduk')}}">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
@@ -221,7 +221,7 @@
             <br>
             <br>
             <li>
-              <a type="button" class="btn btn-block btn-danger" href="{{url('Session/logout')}}">
+              <a type="button" class="btn btn-block btn-danger" href="<?= $this->url->get('Session/logout') ?>">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
               </a>
@@ -255,33 +255,38 @@
                     <h1 class="text-center">Tambah Produk</h1>
                     <br>
                     <!-- <img src="../../images/faces/face6.jpg" alt="">
-                      <h3 class="name text-center">{{ session.get('auth')['nama'] }}</h3>
-                      <a class="d-block text-center text-dark">{{ session.get('auth')['peran'] }}</a>
-                      <a class="d-block text-center text-dark" >{{ session.get('auth')['no_hp'] }}</a>
+                      <h3 class="name text-center"><?= $this->session->get('auth')['nama'] ?></h3>
+                      <a class="d-block text-center text-dark"><?= $this->session->get('auth')['peran'] ?></a>
+                      <a class="d-block text-center text-dark" ><?= $this->session->get('auth')['no_hp'] ?></a>
                     <hr> -->
                     
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
-                        <form method="POST" autocomplete="off" action="{{url('admin/updateproduk/' ~ prod.id_produk)}}" enctype="multipart/form-data">
+                        <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/tambahproduk') ?>" enctype="multipart/form-data">
                           <div class="form-group">
                             <label for="nama_produk" font-size="30px">Nama Produk</label>
-                            <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="{{ prod.nama_produk }}" >
+                            <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" required
+                            autofocus>
                           </div>
                           <div class="form-group">
                             <label for="brand_produk">Brand</label>
-                            <input class="form-control" type="text" id="brand_produk" name="brand_produk" placeholder="Brand Produk" value="{{ prod.brand_produk }}">
+                            <input class="form-control" type="text" id="brand_produk" name="brand_produk" placeholder="Brand Produk" required
+                            autofocus>
                           </div>
                           <div class="form-group">
                             <label for="deskripsi_produk">Deskripsi Produk</label>
-                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" value="{{ prod.deskripsi_produk }}"></textarea>
+                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" required
+                            autofocus></textarea>
                           </div>
                           <div class="form-group">
                             <label for="harga_produk">Harga Produk</label>
-                            <input class="form-control" type="text" id="harga_produk" name="harga_produk" placeholder="Harga Produk" value="{{ prod.harga_produk }}">
+                            <input class="form-control" type="text" id="harga_produk" name="harga_produk" placeholder="Harga Produk" required
+                            autofocus>
                           </div>
                           <div class="form-group">
                             <label for="kategori">Kategori</label>
-                            <input class="form-control" type="text" id="kategori" name="kategori" placeholder="Kategori" value="{{ prod.kategori }}">
+                            <input class="form-control" type="text" id="kategori" name="kategori" placeholder="Kategori" required
+                            autofocus>
                             <p>(Pilihan : Man, Woman, Kids</p>
                             <!-- <select class="form-control form-control-lg" id="kategori_produk" name="kategori_produk" required
                             autofocus>
@@ -289,19 +294,32 @@
                               <option>Woman</option>
                               <option>Kids</option>
                             </select> -->
+                            <label class="my-1 mr-2" for="kategori">Kategori</label>
+                            <select class="custom-select my-1 mr-sm-2" id="kategori" name="kategori"> 
+                              <option selected>Choose...</option>
+                              <option value="Man">Man</option>
+                              <option value="Man">Woman</option>
+                              <option value="Man">Kids</option>
+                            </select>
                           </div>
                           <div class="form-group">
                             <label for="status_produk">Status Produk </label>
-                            <input class="form-control" type="text" id="status_produk" name="status_produk" placeholder="Status Produk" value="{{ prod.status_produk }}">
+                            <input class="form-control" type="text" id="status_produk" name="status_produk" placeholder="Status Produk" required
+                            autofocus>
                             <p>(0:Kosong, 1:Tersedia)</p>
                           </div>
                           <!-- TAMBAH FOTO PRODUK -->
                           
                             <div class="form-group">
-                              <label for="harga_produk">Foto Produk</label>
+                              <!-- <label for="harga_produk">Foto Produk</label>
                               <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk" value="{{ prod.foto_produk }}">
-                                <label class="custom-file-label" for="foto_produk">Pilih File</label>
+                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk">
+                                <label class="custom-file-label" for="foto_produk">Pilih File</label> -->
+                              </div>
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk" required>
+                                <label class="custom-file-label" for="foto_produk">Choose file...</label>
+                                <div class="invalid-feedback">Example invalid custom file feedback</div>
                               </div>
                             </div>
                             
@@ -310,7 +328,7 @@
                               <p class="d-inline ml-3 text-muted">Image size is limited to not greater than 1MB .</p>
                             </div>
                           <div class="form-group mt-5">
-                            <button  class="btn btn-lg btn-primary" type="submit">Simpan Perubahan</button>
+                            <button  class="btn btn-lg btn-primary" type="submit">Tambah Produk</button>
                             <button class="btn btn-lg btn-outline-danger">Batal</button>
                           </div>
                         </form>

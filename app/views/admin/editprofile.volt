@@ -282,7 +282,7 @@
                           </div>
                           <div class="form-group">
                               <label>Password</label>
-                              <input class="form-control" type="password" name="pass" placeholder="Password Anda" required>
+                              <input class="form-control" type="password" name="pass" placeholder="Password Anda" >
                           </div>
                           <div class="form-group mt-5">
                             <button  class="btn btn-primary" type="submit">Update</button>

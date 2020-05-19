@@ -162,7 +162,7 @@
               <div class="nav-link">
                 <div class="profile-image">
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image"/>
-                  <span class="online-status online"></span> <!--change class online to offline or busy as needed-->
+                  <span class="online-status online"></span> 
                 </div>
                 <div class="profile-name">
                   <p class="name">
@@ -188,19 +188,20 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= $this->url->get('/signup/list') ?>">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="<?= $this->url->get('/produk/list') ?>">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
               </a>
             </li>
+            
             <!-- <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                 <i class="icon-grid menu-icon"></i>
@@ -216,6 +217,7 @@
                 </ul>
               </div>
             </li> -->
+            
             <br>
             <br>
             <li>

@@ -238,12 +238,14 @@
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
                       
+                      <a href="<?= $this->url->get('/admin/tambahuser') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                      
                     </div>
-                    <!-- <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>"> -->
-                      <div class="btn-group ml-auto mr-2 border-0">
-                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
+                    <form class="input-group md-form" method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>">
+                      <div class="input-group md-form">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                       </div>
-                    <!-- </form> -->
+                    </form>
                   </div>
                   <div class="table-responsive">
                     <table class="table mt-3 border-top">
@@ -255,6 +257,7 @@
                           <th>Email</th>
                           <th>Alamat</th>
                           <th>No Handphone</th>
+                          <th  class="text-center"><b>Actions</b></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -266,6 +269,8 @@
                             <td><?php echo $user->email; ?></td>
                             <td><?php echo $user->alamat; ?></td>
                             <td><?php echo $user->no_hp; ?></td>
+                            <td><a href="<?= $this->url->get('admin/editprofile/' . $user->id_user) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                              <a href="<?= $this->url->get('admin/hapususer/' . $user->id_user) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>
