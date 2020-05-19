@@ -262,7 +262,7 @@
                     
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
-                        <form method="POST" autocomplete="off" action="{{url('produk/tambah')}}" enctype="multipart/form-data">
+                        <form method="POST" autocomplete="off" action="{{url('admin/tambahproduk')}}" enctype="multipart/form-data">
                           <div class="form-group">
                             <label for="nama_produk" font-size="30px">Nama Produk</label>
                             <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" required

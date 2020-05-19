@@ -237,7 +237,7 @@
                   <b><h1 class="card-title text-center">List Produk</h1></b>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="{{url('/admin/tambahproduk')}}"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                      <a href="{{url('/admin/tambah')}}"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
                     <!-- <form method="POST" autocomplete="off" action="{{url('admin/cariuser')}}"> -->
                       <div class="btn-group ml-auto mr-2 border-0">
@@ -270,7 +270,7 @@
                             <td>{{ prod.harga_produk }}</td>
                             <td class="text-center">{{ prod.status_produk }}</td>
                             <td><a href="{{ url('admin/editproduk/' ~ prod.id_produk) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
-                              <a href="{{ url('produk/hapus/' ~ prod.id_produk) }}" class='btn btn-outline-danger btn-block'>Hapus</a></td>
+                              <a href="{{ url('admin/hapusproduk/' ~ prod.id_produk) }}" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

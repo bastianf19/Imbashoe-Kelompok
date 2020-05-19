@@ -81,7 +81,9 @@ class AdminController extends ControllerBase
 
             if ($success) {
                 echo "Produk berhasil diupdate. <br>";
+                $this->response->redirect('/admin/listproduk');
             }
+            
             echo $this->tag->linkTo(['/produk/list', 'List Produk', 'class' => 'btn btn-primary']);
 
         }
@@ -119,6 +121,15 @@ class AdminController extends ControllerBase
         $this->view->users = Users::find("peran = 'user'");
     }
 
+    public function tambahAction()
+    {
+        $produk = new Produk();
+        $this->view->produk = Produk::find();
+        $user = new Users();
+        $this->view->users = Users::find("peran = 'user'");
+        $admin = new Users();
+        $this->view->admin = Users::find("peran = 'admin'");
+    }
     public function tambahprodukAction()
     {
         $produk = new Produk();
@@ -155,7 +166,7 @@ class AdminController extends ControllerBase
             $message = "Terdapat kesalahan ketika menambahkan produk:<br>"
                      . implode('<br>', $produk->getMessages());
         }
-
+        $this->response->redirect('/admin/listproduk');
         // passing a message to the view
         $this->view->message = $message;
 
@@ -165,7 +176,7 @@ class AdminController extends ControllerBase
         $this->view->produk = Produk::find();
     }
 
-    public function hapusprodukAction($id_user)
+    public function hapusprodukAction($id_produk)
     {
         $prod = Produk::findFirstByid_produk($id_produk);
         unlink($prod->foto_produk);
@@ -177,7 +188,7 @@ class AdminController extends ControllerBase
             echo "Produk berhasil dihapus. <br>";
         }
         // echo 'Produk berhasil dihapus.<br>';
-        echo $this->tag->linkTo(['/admin/produk/list', 'List Produk', 'class' => 'btn btn-primary']);
+        echo $this->tag->linkTo(['/admin/listproduk', 'List Produk', 'class' => 'btn btn-primary']);
     }
 
     public function listuserAction()
