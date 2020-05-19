@@ -205,17 +205,74 @@ class AdminController extends ControllerBase
         $produk = new Produk();
         $this->view->produk = Produk::find();
     }
-    
+    public function hapususerAction($id_user)
+    {
+        $user = new Users();
+        $usr = Users::findFirstByid_user($id_user);
+        $success = $usr->delete();
+        if($success)
+        {
+            $this->flashSession->error('User berhasil dihapus.');
+        }
+        echo 'User berhasil dihapus.<br>';
+        echo $this->tag->linkTo(['/signup/list', 'List User', 'class' => 'btn btn-primary']);
+    }
+    public function registeruserAction()
+    {
+        $user = new Users();
+
+        //assign value from the form to $user
+        $user->assign(
+            $this->request->getPost(),
+            [
+                'username',
+                'nama',
+                'email',
+                'alamat',
+                'no_hp',
+            ]
+        );
+        $pass = $this->request->getPost('pass');
+        $user->pass = $this->security->hash($pass);
+        if ($this->request->getPost('username') == 'admin')
+        {
+            $user->peran = 'admin';
+        }
+        else 
+        {
+            $user->peran = 'user';
+        }
+        // Store and check for errors
+        $success = $user->save();
+
+        // passing the result to the view
+        $this->view->success = $success;
+
+        if ($success) {
+            $message = "Thanks for registering!";
+        } else {
+            $message = "Sorry, the following problems were generated:<br>"
+                     . implode('<br>', $user->getMessages());
+        }
+
+        // passing a message to the view
+        $this->view->message = $message;
+    }
+    public function cariuserAction()
+    {
+        $cari_nama = $this->request->getPost('nama');
+        $this->view->nama_user = $cari_nama;
+        $cari_nama = '%'.$cari_nama.'%';
+        // echo $cari_nama;
+        $user = Users::query()
+            ->where('nama LIKE :cari_nama:')
+            ->bind(
+                [
+                    'cari_nama' => $cari_nama,
+                ]
+            )
+            ->execute();
+        $this->view->cari = $user;
+        // $this->response->redirect('/produk/cari');
+    }
 }
-
-
-// class AdminController extends \Phalcon\Mvc\Controller
-// {
-
-//     public function indexAction()
-//     {
-
-//     }
-
-// }
-

@@ -87,18 +87,18 @@ class SignupController extends ControllerBase
         
         // echo $this->tag->linkTo(["'/home/index'", 'List User', 'class' => 'btn btn-primary']);
     }
-    public function hapusAction($id_user)
-    {
-        $user = new Users();
-        $usr = Users::findFirstByid_user($id_user);
-        $success = $usr->delete();
-        if($success)
-        {
-            $this->flashSession->error('User berhasil dihapus.');
-        }
-        echo 'User berhasil dihapus.<br>';
-        echo $this->tag->linkTo(['/signup/list', 'List User', 'class' => 'btn btn-primary']);
-    }
+    // public function hapusAction($id_user)
+    // {
+    //     $user = new Users();
+    //     $usr = Users::findFirstByid_user($id_user);
+    //     $success = $usr->delete();
+    //     if($success)
+    //     {
+    //         $this->flashSession->error('User berhasil dihapus.');
+    //     }
+    //     echo 'User berhasil dihapus.<br>';
+    //     echo $this->tag->linkTo(['/signup/list', 'List User', 'class' => 'btn btn-primary']);
+    // }
     public function updateAction($id_user)
     {
         // $user = new Users();
