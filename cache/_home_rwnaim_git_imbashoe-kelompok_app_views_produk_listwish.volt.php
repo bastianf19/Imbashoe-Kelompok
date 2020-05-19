@@ -241,13 +241,12 @@
 		<!--/ End Header Inner -->
 	</header>
 	<!--/ End Header -->
-<section class="single-product">
 	<div class="container">
         <div class="row">
             <div class="col-sm-300 col-md-150 col-lg-300 mx-auto">
-                <div class="card card-signin my-5">
+                <div class="card card-signin my-4">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Totals Produk 
+                        <h5 class="card-title text-center">Total Produk 
                             <?php echo $cari->count(); ?>
                         </h5>
                         <form method="POST" autocomplete="off" action="<?= $this->url->get('produk/cari') ?>">
@@ -303,7 +302,6 @@
             </div>
         </div>
 	</div>
-</section>
 
 
 <!-- Start Footer Area -->

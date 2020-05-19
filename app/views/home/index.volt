@@ -99,7 +99,7 @@
 							</div>
                            
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i> <span class="total-count">2</span></a>
+								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i> <span class="total-count"><?php echo $wish->count(); ?></span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
@@ -107,25 +107,23 @@
 										<a href="{{url('produk/listwish/')}}">View Wishlist</a>
 									</div>
 									<ul class="shopping-list">
+										{% for prod in cari %}
 										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-											
+											<a class="cart-img" href="#"><img src='{{url(prod.produk.foto_produk)}}' class="mx-auto d-block" width="100"
+												height="100"></a>
+											<h4><a href="#">{{ prod.produk.nama_produk }}</a></h4>
+											<span>{{ prod.produk.harga_produk }}</span>
+											<a href="{{ url('produk/hapuswish/' ~ prod.id_wishlist)}}" class="btn btn-sm btn-outline-danger"></i>Hapus</a>
 										</li>
-										<li>
+										{% endfor %}
+										<!-- <li>
 											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
 											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
 											<h4><a href="#">Woman Necklace</a></h4>
 											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
+										</li> -->
 									</ul>
 									<div class="bottom">
-										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
-										</div>
 										<a href="{{url('produk/listwish/')}}" class="btn animate">Lihat Selengkapnya</a>
 									</div>
 								</div>
@@ -312,7 +310,7 @@
 													<div class="button-head">
 														<div class="product-action">
 															<!--  <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>  -->
-															<a title="Wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>Add to Wishlist</span></a>
+															<!-- <a title="Wishlist" href="{{url('produk/tambahwish/' ~ produk.id_produk)}}"><i class="fa fa-heart" aria-hidden="true"></i><span>Add to Wishlist</span></a> -->
 															<!--  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>   -->
 														</div>
 														<div class="product-action-2">
