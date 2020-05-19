@@ -362,9 +362,9 @@
 					<h6>Stock tersedia</h6>
 					<br>
 					<br>
-					<a href="{{url('produk/tambahwish/' ~ produk.id_produk)}}" class=" btn btn-lg btn-primary" role="button">Tambahkan ke Wishlist</a>
+					<a href="{{url('produk/tambahwish/' ~ produk.id_produk)}}" class=" btn btn-lg btn-danger" role="button"><i class="fa fa-heart" aria-hidden="true"></i> Tambahkan ke Wishlist</a>
 					<!-- <button class=" btn btn-lg btn-primary"><a href=Tambahkan ke Wishlist</button> -->
-					<a href="{{url('produk/listwish/')}}" class=" btn btn-lg btn-primary" role="button">test</a>
+					<a href="{{url('produk/listwish/')}}" class=" btn btn-lg btn-primary" role="button">Daftar Wishlist</a>
 				</div>
 			</div>
 			
