@@ -242,6 +242,15 @@
                       <a href="{{url('/admin/tambahuser')}}"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add User</button></a>
                       
                     </div>
+                    <form method="POST" autocomplete="off" action="{{url('admin/cariuser')}}">
+                    
+                      <div class="input-group mb-4">
+                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary btn-block" type="submit">Cari</button>
+                        </div>
+                      </div>
+                    </form>
                    
                   </div>
                   <div class="table-responsive">
@@ -254,6 +263,7 @@
                           <th>Email</th>
                           <th>Alamat</th>
                           <th>No Handphone</th>
+                          <th class="text-center">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -265,6 +275,8 @@
                             <td><?php echo $user->email; ?></td>
                             <td><?php echo $user->alamat; ?></td>
                             <td><?php echo $user->no_hp; ?></td>
+                            <td><a href="{{ url('admin/edituser/' ~ user.id_user) }}" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                              <a href="{{ url('admin/hapususer/' ~ user.id_user) }}" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

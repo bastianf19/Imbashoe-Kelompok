@@ -238,12 +238,16 @@
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
                       
-                      <a href="<?= $this->url->get('/admin/tambahuser') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                      <a href="<?= $this->url->get('/admin/tambahuser') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add User</button></a>
                       
                     </div>
-                    <form class="input-group md-form" method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>">
-                      <div class="input-group md-form">
-                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>">
+                    
+                      <div class="input-group mb-4">
+                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary btn-block" type="submit">Cari</button>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -269,7 +273,7 @@
                             <td><?php echo $user->email; ?></td>
                             <td><?php echo $user->alamat; ?></td>
                             <td><?php echo $user->no_hp; ?></td>
-                            <td><a href="<?= $this->url->get('admin/editprofile/' . $user->id_user) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                            <td><a href="<?= $this->url->get('admin/edituser/' . $user->id_user) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
                               <a href="<?= $this->url->get('admin/hapususer/' . $user->id_user) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
                         <?php } ?>

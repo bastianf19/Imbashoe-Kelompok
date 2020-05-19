@@ -26,25 +26,7 @@
         </button>
         <ul class="navbar-nav">
           <li class="nav-item dropdown d-none d-lg-flex">
-            <a class="nav-link dropdown-toggle nav-btn" id="actionDropdown" href="#" data-toggle="dropdown">
-              <span class="btn">+ Create admin</span>
-            </a>
-            <div class="dropdown-menu navbar-dropdown dropdown-left" aria-labelledby="actionDropdown">
-              <a class="dropdown-item" href="#">
-                <i class="icon-user text-primary"></i>
-                User Account
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-user-following text-warning"></i>
-                Admin User
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-docs text-success"></i>
-                Sales report
-              </a>
-            </div>
+            <h3>Halaman Admin</h3>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
@@ -180,7 +162,7 @@
               <div class="nav-link">
                 <div class="profile-image">
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image"/>
-                  <span class="online-status online"></span> <!--change class online to offline or busy as needed-->
+                  <span class="online-status online"></span> 
                 </div>
                 <div class="profile-name">
                   <p class="name">
@@ -206,19 +188,20 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= $this->url->get('/signup/list') ?>">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="<?= $this->url->get('/produk/list') ?>">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
               </a>
             </li>
+            
             <!-- <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                 <i class="icon-grid menu-icon"></i>
@@ -234,6 +217,7 @@
                 </ul>
               </div>
             </li> -->
+            
             <br>
             <br>
             <li>
@@ -275,7 +259,7 @@
                     
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
-                        <form method="POST" action="<?= $this->url->get('signup/update/' . $this->session->get('auth')['id_user']) ?>" autocomplete="off">
+                        <form method="POST" action="<?= $this->url->get('admin/updateuser/' . $user->id_user) ?>" autocomplete="off">
                           <div class="form-group">
                             <label for="nama" font-size="30px">Nama Lengkap</label>
                             <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama Lengkap" value="<?= $user->nama ?>">
@@ -296,7 +280,10 @@
                             <label>Alamat</label>
                             <input class="form-control" id="alamat" name="alamat" placeholder="Alamat Lengkap" type="text" value="<?= $user->alamat ?>"></input>
                           </div>
-                          
+                          <div class="form-group">
+                              <label>Password</label>
+                              <input class="form-control" type="password" name="pass" placeholder="Password Anda" >
+                          </div>
                           <div class="form-group mt-5">
                             <button  class="btn btn-primary" type="submit">Update</button>
                             <button class="btn btn-outline-danger">Cancel</button>
@@ -344,8 +331,7 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2017 <a href="#">UrbanUI</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020 <a href="#">Imbashoe.com</a>. All rights reserved.</span>
           </div>
         </footer>
         <!-- partial -->

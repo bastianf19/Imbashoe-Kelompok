@@ -234,15 +234,19 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <b><h1 class="card-title text-center">List User</h1></b>
-                  <h5 class="card-title text-center">Cari User | '<?php echo $nama_prod; ?>'</h5>
+                  <b><h1 class="card-title text-center">List Produk</h1></b>
+                  <h5 class="card-title text-center">Cari Produk | '<?php echo $nama_prod; ?>'</h5>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
                       <a href="<?= $this->url->get('/admin/tambah') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
-                    <form class="input-group md-form" method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariproduk') ?>">
-                      <div class="input-group md-form">
-                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariproduk') ?>">
+                    
+                      <div class="input-group mb-4">
+                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari Produk" aria-label="Cari Produk">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary btn-block" type="submit">Cari</button>
+                        </div>
                       </div>
                     </form>
                     
@@ -251,19 +255,20 @@
                     <table class="table mt-3 border-top">
                       <thead>
                         <tr>
-                          <th>Id User</th>
-                          <th>Username</th>
-                          <th>Nama Lengkap</th>
-                          <th>Email</th>
-                          <th>Alamat</th>
-                          <th>No Handphone</th>
-                          <th>Actions</th>
+                          <th class="text-center"><b>ID Produk</b></th>
+                          <th class="text-center"><b>Gambar Produk</b></th>
+                          <th class="text-center"><b>Nama Produk</b></th>
+                          <th class="text-center"><b>Brand</b></th>
+                          <th class="text-center"><b>Deskrips Produk</b></th>
+                          <th><b>Harga</b></th>
+                          <th class="text-center"><b>Status</b></th>
+                          <th class="text-center"><b>Actions</b></th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php foreach ($cari as $prod) { ?>
                         <tr>
-                          <td  class="text-center"><?= $prod->id_produk ?></td>
+                          <td class="text-center"><?= $prod->id_produk ?></td>
                           <td><img src="<?= $this->url->get($prod->foto_produk) ?>" width="100px"></td>
                           <td><?= $prod->nama_produk ?></td>
                           <td><?= $prod->brand_produk ?></td>
@@ -274,7 +279,7 @@
                             <a href="<?= $this->url->get('admin/hapusproduk/' . $prod->id_produk) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
                         <?php } ?>
-                    </tbody>
+                      </tbody>
                     </table>
                   </div>
                   <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">

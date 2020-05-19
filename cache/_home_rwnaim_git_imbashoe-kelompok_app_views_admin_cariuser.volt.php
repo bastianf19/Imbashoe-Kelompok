@@ -26,25 +26,7 @@
         </button>
         <ul class="navbar-nav">
           <li class="nav-item dropdown d-none d-lg-flex">
-            <a class="nav-link dropdown-toggle nav-btn" id="actionDropdown" href="#" data-toggle="dropdown">
-              <span class="btn">+ Create admin</span>
-            </a>
-            <div class="dropdown-menu navbar-dropdown dropdown-left" aria-labelledby="actionDropdown">
-              <a class="dropdown-item" href="#">
-                <i class="icon-user text-primary"></i>
-                User Account
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-user-following text-warning"></i>
-                Admin User
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="icon-docs text-success"></i>
-                Sales report
-              </a>
-            </div>
+            <h3>Halaman Admin</h3>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
@@ -180,7 +162,7 @@
               <div class="nav-link">
                 <div class="profile-image">
                   <img src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image"/>
-                  <span class="online-status online"></span> <!--change class online to offline or busy as needed-->
+                  <span class="online-status online"></span> 
                 </div>
                 <div class="profile-name">
                   <p class="name">
@@ -194,7 +176,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="<?= $this->url->get('/admin/edit/' . $this->session->get('auth')['id_user']) ?>"">
+              <a class="nav-link" href="<?= $this->url->get('/admin/editprofile/' . $this->session->get('auth')['id_user']) ?>"">
                 <i class="fas fa-edit menu-icon"></i>
                 <span class="menu-title">Edit Profile</span>
               </a>
@@ -206,14 +188,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= $this->url->get('/signup/list') ?>">
+              <a class="nav-link" href="<?= $this->url->get('/admin/listuser') ?>">
                 <i class="fas fa-users menu-icon"></i>
                 <span class="menu-title">List User</span>
                 <span class="badge badge-warning"><?php echo $users->count(); ?></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="<?= $this->url->get('/produk/list') ?>">
+              <a class="nav-link"  href="<?= $this->url->get('/admin/listproduk') ?>">
                 <i class="fas fa-boxes menu-icon"></i>
                 <span class="menu-title">List Produk</span>
                 <span class="badge badge-warning"><?php echo $produk->count(); ?></span>
@@ -252,16 +234,24 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h6 class="card-title">List User</h6>
+                  <b><h1 class="card-title text-center">List User</h1></b>
+                  <h5 class="card-title text-center">Cari User | '<?php echo $nama_user; ?>'</h5>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
-                      <a href="<?= $this->url->get('/signup') ?>"><button class="btn btn-danger"><i class="fas fa-plus"></i> Add</button></a>
+                      
+                      <a href="<?= $this->url->get('/admin/tambahuser') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add User</button></a>
+                      
                     </div>
+                    <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariuser') ?>">
                     
-                    <div class="btn-group ml-auto mr-2 border-0">
-                      <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
-                    </div>
-                    
+                      <div class="input-group mb-4">
+                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari User" aria-label="Cari User">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary btn-block" type="submit">Cari</button>
+                        </div>
+                      </div>
+                    </form>
+                   
                   </div>
                   <div class="table-responsive">
                     <table class="table mt-3 border-top">
@@ -273,11 +263,11 @@
                           <th>Email</th>
                           <th>Alamat</th>
                           <th>No Handphone</th>
-                          <th>Actions</th>
+                          <th class="text-center">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($cariuser as $prod) { ?>
+                        <?php foreach ($cariuser as $user) { ?>
                         <tr>
                             <td><?php echo $user->id_user; ?></td>
                             <td><?php echo $user->username; ?></td>
@@ -285,10 +275,10 @@
                             <td><?php echo $user->email; ?></td>
                             <td><?php echo $user->alamat; ?></td>
                             <td><?php echo $user->no_hp; ?></td>
-                            <td><a href="<?= $this->url->get('admin/edituser/' . $user->id_user) ?>" class='btn btn-primary btn-block'>Edit</a><br>
-                            <a href="<?= $this->url->get('signup/hapus/' . $user->id_user) ?>" class='btn btn-primary btn-block'>Hapus</a></td>
+                            <td><a href="<?= $this->url->get('admin/edituser/' . $user->id_user) ?>" class='btn btn-outline-primary btn-block'>Edit</a><br>
+                              <a href="<?= $this->url->get('admin/hapususer/' . $user->id_user) ?>" class='btn btn-outline-danger btn-block'>Hapus</a></td>
                         </tr>
-                        <?php } ?>>
+                        <?php } ?>
                     </tbody>
                     </table>
                   </div>
@@ -309,341 +299,12 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title">Monthly Analytics</h6>
-                  <p class="card-description">Products that are creating the most revenue and their sales throughout the year and the variation in behavior of sales.</p>
-                  <div id="js-legend" class="chartjs-legend mt-4 mb-5"></div>
-                  <div class="demo-chart">
-                    <canvas id="dashboard-monthly-analytics"></canvas>                  
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <h6 class="card-title">Activity</h6>
-                  </div>
-                  <p class="card-description">What's people doing right now</p>
-                  <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Dobrick </b>posted in Material</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Awesome!</p>
-                        </div>
-                        <small class="text-muted ml-auto">2 hours ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Stella </b>posted in Material</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Awesome!</p>
-                        </div>
-                        <small class="text-muted ml-auto">3 hours ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list d-flex align-items-center border-bottom py-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Peter </b>posted in Material</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Great!</p>
-                        </div>
-                        <small class="text-muted ml-auto">1 hours ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list d-flex align-items-center pt-3">
-                    <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="">
-                    <div class="wrapper w-100 ml-3">
-                      <p class="mb-0"><b>Nateila </b>posted in Material</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-clock text-muted mr-1"></i>
-                          <p class="mb-0">Awesome!</p>
-                        </div>
-                        <small class="text-muted ml-auto">1 hours ago</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title">Sales Difference</h6>
-                  <p>Sales difference with last year</p>
-                </div>
-                <div id="morris-area-example"></div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title">Sales Chart</h6>
-                  <p class="card-description">Based on last month analytics.</p>
-                  <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-secondary">2015</button>
-                    <button type="button" class="btn btn-outline-secondary">2016</button>
-                  </div>
-                  <div id="morris-dashboard-bar-chart" style="height:250px;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body pb-0">
-                  <h6 class="card-title">Reviews</h6>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="wrapper border-bottom py-2">
-                        <div class="d-flex">
-                          <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image">
-                          <div class="wrapper ml-4">
-                            <p class="mb-0">Sarah Graves</p>
-                            <small class="text-muted mb-0">Awesome!!! Highly recommend</small>
-                          </div>
-                          <div class="rating ml-auto d-flex align-items-center">
-                            <select id="dashboard-rating-2" name="rating">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="wrapper border-bottom py-2">
-                        <div class="d-flex">
-                          <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image">
-                          <div class="wrapper ml-4">
-                            <p class="mb-0">David Grey</p>
-                            <small class="text-muted mb-0">Not satisfied with the service.</small>
-                          </div>
-                          <div class="rating ml-auto d-flex align-items-center">
-                            <select id="dashboard-rating-1" name="rating">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="wrapper border-bottom py-2">
-                        <div class="d-flex">
-                          <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image">
-                          <div class="wrapper ml-4">
-                            <p class="mb-0">Burno mars</p>
-                            <small class="text-muted mb-0">Great!! It's the best</small>
-                          </div>
-                          <div class="rating ml-auto d-flex align-items-center">
-                            <select id="dashboard-rating-3" name="rating">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="wrapper py-2">
-                        <div class="d-flex">
-                          <img class="img-sm rounded-circle" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image">
-                          <div class="wrapper ml-4">
-                            <p class="mb-0">Dobrick</p>
-                            <small class="text-muted mb-0">Not worth the money.</small>
-                          </div>
-                          <div class="rating ml-auto d-flex align-items-center">
-                            <select id="dashboard-rating-4" name="rating">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 stretch-card">
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6 class="card-title mb-0">Statistics</h6>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-inline-block pt-3">
-                          <div class="d-lg-flex">
-                            <h2 class="mb-0">$10,200</h2>
-                            <div class="d-flex align-items-center ml-lg-2">
-                              <i class="mdi mdi-clock text-muted"></i>
-                              <small class="ml-1 mb-0">Updated: 9:10am</small>
-                            </div>
-                          </div>
-                          <small class="text-gray">Raised from 89 orders.</small>
-                        </div>
-                        <div class="d-inline-block">
-                          <div class="bg-success px-3 px-md-4 py-2 rounded">
-                            <i class="mdi mdi-buffer text-white icon-lg"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6 class="card-title mb-0">Daily Order</h6>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-inline-block pt-3">
-                          <div class="d-lg-flex">
-                            <h2 class="mb-0">$2256</h2>
-                            <div class="d-flex align-items-center ml-lg-2">
-                              <i class="mdi mdi-clock text-muted"></i>
-                              <small class="ml-1 mb-0">Updated: 05:42pm</small>
-                            </div>
-                          </div>
-                          <small class="text-gray">hey, let’s have lunch together</small>
-                        </div>
-                        <div class="d-inline-block">
-                          <div class="bg-warning px-3 px-md-4 py-2 rounded">
-                            <i class="mdi mdi-wallet text-white icon-lg"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <div class="wrapper d-md-flex align-items-center justify-content-center text-center text-md-left">
-                    <i class="mdi mdi-facebook icon-lg text-facebook"></i>
-                    <div class="wrapper ml-md-3">
-                      <p class="text-facebook mb-0 font-weight-medium">15k Likes</p>
-                      <small class="text-muted mb-0">You main list growing !</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <div class="wrapper d-md-flex align-items-center justify-content-center text-center text-md-left">
-                    <i class="mdi mdi-twitter icon-lg text-twitter"></i>
-                    <div class="wrapper ml-md-3">
-                      <p class="text-twitter mb-0 font-weight-medium">18k followers</p>
-                      <small class="text-muted mb-0">There you are !</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <div class="wrapper d-md-flex align-items-center justify-content-center text-center text-md-left">
-                    <i class="mdi mdi-linkedin icon-lg text-linkedin"></i>
-                    <div class="wrapper ml-md-3">
-                      <p class="text-linkedin mb-0 font-weight-medium">5k connections</p>
-                      <small class="text-muted mb-0">Going good !</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <div class="wrapper d-flex align-items-center justify-content-start justify-content-sm-center">
-                    <img class="img-md rounded" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image">
-                    <div class="wrapper ml-4">
-                      <p class="mb-0 font-weight-medium">Tim Cook</p>
-                      <small class="text-muted mb-0">timcook@gmail.com</small>
-                      <p class="text-success mb-0 font-weight-medium">Designer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <div class="wrapper d-flex align-items-center justify-content-start justify-content-sm-center">
-                    <img class="img-md rounded" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image">
-                    <div class="wrapper ml-4">
-                      <p class="mb-0 font-weight-medium">Sarah Graves</p>
-                      <small class="text-muted mb-0">Sarahgraves@gmail.com</small>
-                      <p class="text-success mb-0 font-weight-medium">Developer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <div class="wrapper d-flex align-items-center justify-content-start justify-content-sm-center">
-                    <img class="img-md rounded" src="http://via.placeholder.com/100x100/f4f4f4/000000" alt="image">
-                    <div class="wrapper ml-4">
-                      <p class="mb-0 font-weight-medium">David Grey</p>
-                      <small class="text-muted mb-0">David@gmail.com</small>
-                      <p class="text-success mb-0 font-weight-medium">Support Lead</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>  
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2017 <a href="#">UrbanUI</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020 <a href="#">Imbashoe.com</a>. All rights reserved.</span>
           </div>
         </footer>
         <!-- partial -->

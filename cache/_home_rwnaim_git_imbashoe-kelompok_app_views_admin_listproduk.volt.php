@@ -239,9 +239,13 @@
                     <div class="btn-group mr-2">
                       <a href="<?= $this->url->get('/admin/tambah') ?>"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
                     </div>
-                    <form class="input-group md-form" method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariproduk') ?>">
-                      <div class="input-group md-form">
-                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    <form method="POST" autocomplete="off" action="<?= $this->url->get('admin/cariproduk') ?>">
+                    
+                      <div class="input-group mb-4">
+                        <input type="text" class="form-control" id='nama' name='nama' placeholder="Cari Produk" aria-label="Cari Produk">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary btn-block" type="submit">Cari</button>
+                        </div>
                       </div>
                     </form>
                   </div>
