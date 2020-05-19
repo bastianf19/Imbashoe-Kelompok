@@ -235,18 +235,14 @@
               <div class="card">
                 <div class="card-body">
                   <b><h1 class="card-title text-center">List User</h1></b>
-                  <h5 class="card-title text-center">Cari User | '<?php echo $nama; ?>'</h5>
+                  <h5 class="card-title text-center">Cari User | '<?php echo $nama_user; ?>'</h5>
                   <div class="d-flex table-responsive">
                     <div class="btn-group mr-2">
                       
-                      <a href="{{url('/admin/tambahuser')}}"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add Produk</button></a>
+                      <a href="{{url('/admin/tambahuser')}}"><button class="btn btn-lg btn-danger"><i class="fas fa-plus"></i> Add User</button></a>
                       
                     </div>
-                    <form class="input-group md-form" method="POST" autocomplete="off" action="{{url('admin/cariuser')}}">
-                      <div class="input-group md-form">
-                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                      </div>
-                    </form>
+                   
                   </div>
                   <div class="table-responsive">
                     <table class="table mt-3 border-top">
@@ -261,7 +257,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($users as $user) { ?>
+                        <?php foreach ($cariuser as $user) { ?>
                         <tr>
                             <td><?php echo $user->id_user; ?></td>
                             <td><?php echo $user->username; ?></td>

@@ -259,26 +259,26 @@
                     
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
-                        <form method="POST" action="{{ url('signup/update/' ~ session.get('auth')['id_user']) }}" autocomplete="off">
+                        <form method="POST" action="{{ url('admin/updateuser/' ~ user.id_user) }}" autocomplete="off">
                           <div class="form-group">
                             <label for="nama" font-size="30px">Nama Lengkap</label>
-                            <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama Lengkap" value="{{session.get('auth')['nama']}}">
+                            <input class="form-control" type="text" id="nama" name="nama" placeholder="Nama Lengkap" value="{{user.nama}}">
                           </div>
                           <div class="form-group">
                             <label for="username">Username</label>
-                            <input class="form-control" type="text" id="username" name="username" placeholder="Username" value="{{session.get('auth')['username']}}">
+                            <input class="form-control" type="text" id="username" name="username" placeholder="Username" value="{{user.username}}">
                           </div>
                           <div class="form-group">
                             <label for="no_hp">Nomor Handphone</label>
-                            <input class="form-control" name="no_hp" id="no_hp" placeholder="Nomor Handphone" type="text" value="{{session.get('auth')['no_hp']}}"></input>
+                            <input class="form-control" name="no_hp" id="no_hp" placeholder="Nomor Handphone" type="text" value="{{user.no_hp}}"></input>
                           </div>
                           <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" type="text" id="email" name="email" placeholder="Email" value="{{session.get('auth')['email']}}">
+                            <input class="form-control" type="text" id="email" name="email" placeholder="Email" value="{{user.email}}">
                           </div>
                           <div class="form-group">
                             <label>Alamat</label>
-                            <input class="form-control" id="alamat" name="alamat" placeholder="Alamat Lengkap" type="text" value="{{session.get('auth')['alamat']}}"></input>
+                            <input class="form-control" id="alamat" name="alamat" placeholder="Alamat Lengkap" type="text" value="{{user.alamat}}"></input>
                           </div>
                           <div class="form-group">
                               <label>Password</label>

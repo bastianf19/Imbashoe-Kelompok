@@ -252,7 +252,7 @@
                     </ul>
                   </div>
                   <div class="wrapper">
-                    <h1 class="text-center">Tambah Produk</h1>
+                    <h1 class="text-center">Tambah User</h1>
                     <br>
                     <!-- <img src="../../images/faces/face6.jpg" alt="">
                       <h3 class="name text-center">{{ session.get('auth')['nama'] }}</h3>
@@ -262,73 +262,37 @@
                     
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info">
-                        <form method="POST" autocomplete="off" action="{{url('admin/tambahproduk')}}" enctype="multipart/form-data">
+                        <form method="POST" autocomplete="off" action="{{url('admin/registeruser')}}" enctype="multipart/form-data">
                           <div class="form-group">
-                            <label for="nama_produk" font-size="30px">Nama Produk</label>
-                            <input class="form-control" type="text" id="nama_produk" name="nama_produk" placeholder="Nama Produk" required
+                            <label for="username" font-size="30px">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" placeholder="Username" required
                             autofocus>
                           </div>
                           <div class="form-group">
-                            <label for="brand_produk">Brand</label>
-                            <input class="form-control" type="text" id="brand_produk" name="brand_produk" placeholder="Brand Produk" required
+                            <label for="nama">nama</label>
+                            <input class="form-control" type="text" id="nama" name="nama" placeholder="nama" required
                             autofocus>
                           </div>
                           <div class="form-group">
-                            <label for="deskripsi_produk">Deskripsi Produk</label>
-                            <textarea class="form-control" type="text" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk" rows="10" required
-                            autofocus></textarea>
+                            <label for="email">email</label>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="email" required autofocus>
                           </div>
                           <div class="form-group">
-                            <label for="harga_produk">Harga Produk</label>
-                            <input class="form-control" type="text" id="harga_produk" name="harga_produk" placeholder="Harga Produk" required
+                            <label for="pass">Pass</label>
+                            <input class="form-control" type="password" id="pass" name="pass" placeholder="password" required
                             autofocus>
                           </div>
                           <div class="form-group">
-                            <label for="kategori">Kategori</label>
-                            <input class="form-control" type="text" id="kategori" name="kategori" placeholder="Kategori" required
-                            autofocus>
-                            <p>(Pilihan : Man, Woman, Kids</p>
-                            <!-- <select class="form-control form-control-lg" id="kategori_produk" name="kategori_produk" required
-                            autofocus>
-                              <option>Man</option>
-                              <option>Woman</option>
-                              <option>Kids</option>
-                            </select> -->
-                            <label class="my-1 mr-2" for="kategori">Kategori</label>
-                            <select class="custom-select my-1 mr-sm-2" id="kategori" name="kategori"> 
-                              <option selected>Choose...</option>
-                              <option value="Man">Man</option>
-                              <option value="Man">Woman</option>
-                              <option value="Man">Kids</option>
-                            </select>
+                            <label for="alamat">Alamat</label>
+                            <input class="form-control" type="text" id="alamat" name="alamat" placeholder="alamat" required autofocus>
                           </div>
                           <div class="form-group">
-                            <label for="status_produk">Status Produk </label>
-                            <input class="form-control" type="text" id="status_produk" name="status_produk" placeholder="Status Produk" required
-                            autofocus>
-                            <p>(0:Kosong, 1:Tersedia)</p>
+                            <label for="no_hp">Nomor HP</label>
+                            <input class="form-control" type="text" id="no_hp" name="no_hp" placeholder="no_hp" required autofocus>
                           </div>
-                          <!-- TAMBAH FOTO PRODUK -->
-                          
-                            <div class="form-group">
-                              <!-- <label for="harga_produk">Foto Produk</label>
-                              <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk">
-                                <label class="custom-file-label" for="foto_produk">Pilih File</label> -->
-                              </div>
-                              <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="foto_produk" name="foto_produk" required>
-                                <label class="custom-file-label" for="foto_produk">Choose file...</label>
-                                <div class="invalid-feedback">Example invalid custom file feedback</div>
-                              </div>
-                            </div>
                             
-                            <div class="wrapper mb-3 mt-0">
-                              <span class="badge badge-warning text-white">Note : </span>
-                              <p class="d-inline ml-3 text-muted">Image size is limited to not greater than 1MB .</p>
-                            </div>
                           <div class="form-group mt-5">
-                            <button  class="btn btn-lg btn-primary" type="submit">Tambah Produk</button>
+                            <button  class="btn btn-lg btn-primary" type="submit">Tambah User</button>
                             <button class="btn btn-lg btn-outline-danger">Batal</button>
                           </div>
                         </form>

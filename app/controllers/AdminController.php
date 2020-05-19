@@ -104,7 +104,7 @@ class AdminController extends ControllerBase
         $this->view->nama_prod = $cari_nama;
         $cari_nama = '%'.$cari_nama.'%';
         // echo $cari_nama;
-        $produk = Produk::query()
+        $produks = Produk::query()
             ->where('nama_produk LIKE :cari_nama:')
             ->bind(
                 [
@@ -112,7 +112,7 @@ class AdminController extends ControllerBase
                 ]
             )
             ->execute();
-        $this->view->cari = $produk;
+        $this->view->cari = $produks;
 
 
         $produk = new Produk();
@@ -214,8 +214,14 @@ class AdminController extends ControllerBase
         {
             $this->flashSession->error('User berhasil dihapus.');
         }
-        echo 'User berhasil dihapus.<br>';
-        echo $this->tag->linkTo(['/signup/list', 'List User', 'class' => 'btn btn-primary']);
+        $this->response->redirect('/admin/listuser');
+    }
+    public function tambahuserAction()
+    {
+        $user = new Users();
+        $this->view->users = Users::find("peran = 'user'");
+        $produk = new Produk();
+        $this->view->produk = Produk::find();
     }
     public function registeruserAction()
     {
@@ -247,7 +253,7 @@ class AdminController extends ControllerBase
 
         // passing the result to the view
         $this->view->success = $success;
-
+        $this->response->redirect('/admin/listuser');
         if ($success) {
             $message = "Thanks for registering!";
         } else {
@@ -260,11 +266,16 @@ class AdminController extends ControllerBase
     }
     public function cariuserAction()
     {
+        $user = new Users();
+        $this->view->users = Users::find("peran = 'user'");
+        $produk = new Produk();
+        $this->view->produk = Produk::find();
+
         $cari_nama = $this->request->getPost('nama');
         $this->view->nama_user = $cari_nama;
         $cari_nama = '%'.$cari_nama.'%';
         // echo $cari_nama;
-        $user = Users::query()
+        $cari_user = Users::query()
             ->where('nama LIKE :cari_nama:')
             ->bind(
                 [
@@ -272,7 +283,63 @@ class AdminController extends ControllerBase
                 ]
             )
             ->execute();
-        $this->view->cari = $user;
+        $this->view->cariuser = $cari_user;
         // $this->response->redirect('/produk/cari');
+    }
+    public function edituserAction($id_user)
+    {
+        $editUser = Users::findFirstByid_user($id_user);
+        $this->view->user = $editUser;
+        $user = new Users();
+        $this->view->users = Users::find("peran = 'user'");
+        $produk = new Produk();
+        $this->view->produk = Produk::find();
+    }
+    public function updateuserAction($id_user)
+    {
+        // $user = new Users();
+        $valid = new UserValidation();
+        $message = $valid->validate($_POST);
+        if(!count($message))
+        {
+            $usr = Users::findFirstByid_user($id_user);
+            $usr->assign(
+                $this->request->getPost(),
+                [
+                    'username',
+                    'nama',
+                    'email',
+                    'alamat',
+                    'no_hp',
+                ]
+            );
+            
+            $pass = $this->request->getPost('pass');
+            $usr->pass = $this->security->hash($pass);
+            // Store and check for errors
+            // $usr->updated_at = date('Y-m-d h:i:sa');
+            $success = $usr->save();
+            // $this->flashSession->error('Produk berhasil dirubah.');
+            echo 'User berhasil dirubah!! <br>';
+            $this->response->redirect('/admin/listuser');
+            if($this->session->get('auth')['peran'] == 'user')
+            {
+                echo $this->tag->linkTo(['/home', 'Ke Home Yuk!', 'class' => 'btn btn-primary']);
+            }
+            else 
+            {
+                echo $this->tag->linkTo(['/admin', 'Admin Home', 'class' => 'btn btn-primary']);
+            }
+        }
+        else
+        {
+            foreach ($message as $msg) 
+            {
+                $this->flashSession->error($msg->getMessage());
+            }
+            echo 'Gagal Bro, <br>';
+            echo $this->tag->linkTo(['/signup/edit ~ user.id_user', 'Kembali Yuk', 'class' => 'btn btn-primary']);
+
+        }
     }
 }
